@@ -4,87 +4,230 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MOJEDAAR — Custom Socks Store</title>
-  
-  <!-- Fonts -->
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Navigation Bar */
+    .sox-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      background: #fff7e8;
+      border-bottom: 2px solid #302047;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .sox-logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 22px;
+      color: #302047;
+      text-decoration: none;
+    }
+
+    .sox-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sox-nav a.sox-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 2px solid #302047;
+      border-radius: 999px;
+      background: #f05a9d;
+      color: #302047;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease;
+      cursor: pointer;
+    }
+
+    .sox-nav a.sox-cart {
+      background: #302047;
+      color: #fff;
+    }
+
+    .sox-nav a.sox-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Studio Frame & Animated Loader */
+    .sox-embed-frame {
+      position: relative;
+      width: 100%;
+      height: 85vh;
+      min-height: 550px;
+      background: #fff7e8;
+    }
+
+    .sox-embed-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .sox-embed-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: #fff7e8;
+      transition: opacity .4s ease;
+      z-index: 10;
+    }
+
+    .sox-embed-loading.sox-hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sox-embed-sock {
+      width: 64px;
+      height: 64px;
+      border-radius: 1.25rem;
+      background: #f05a9d;
+      border: 3px solid #302047;
+      box-shadow: 6px 6px 0 0 #302047;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      animation: sox-wobble 1.6s ease-in-out infinite;
+    }
+
+    .sox-embed-text {
+      font-family: 'Archivo Black', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      font-size: 15px;
+      color: #302047;
+    }
+
+    @keyframes sox-wobble {
+      0%, 100% { transform: rotate(-6deg); }
+      50% { transform: rotate(6deg); }
+    }
+
+    @media (max-width: 480px) {
+      .sox-nav {
+        padding: 12px 10px;
+        gap: 8px;
+      }
+      .sox-logo {
+        font-size: 17px;
+      }
+      .sox-nav-links {
+        gap: 6px;
+      }
+      .sox-nav a.sox-btn {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+    }
+  </style>
 </head>
-<body class="woocommerce">
+<body>
 
-  <header class="woocommerce-products-header">
-    <h1 class="woocommerce-products-header__title">MOJEDAAR SOCKS</h1>
-    <p class="woocommerce-breadcrumb">
-      <a href="#">Home</a> / <span>Shop</span>
-    </p>
-  </header>
+  <!-- Navigation Bar -->
+  <nav class="sox-nav">
+    <a class="sox-logo" href="#">MOJEDAAR</a>
+    <div class="sox-nav-links">
+      <a class="sox-btn" href="#shop-section">SHOP</a>
+      <a class="sox-btn sox-cart" href="#cart-section" onclick="openCart()">CART (<span id="cart-count">0</span>)</a>
+    </div>
+  </nav>
 
-  <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+  <!-- Sockiverse Customizer Studio Section -->
+  <section class="sox-embed-frame">
+    <div class="sox-embed-loading" id="sox-loading">
+      <span class="sox-embed-sock">🧦</span>
+      <span class="sox-embed-text">Loading the drop…</span>
+    </div>
+    <iframe
+      src="https://sockiverse-studio.lovable.app"
+      title="Sockiverse Studio"
+      loading="eager"
+      allow="clipboard-write; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+      onload="document.getElementById('sox-loading').classList.add('sox-hide')">
+    </iframe>
+  </section>
+
+  <!-- Ready to Buy Collection -->
+  <main id="shop-section" class="woocommerce" style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+    <header class="woocommerce-products-header">
+      <h1 class="woocommerce-products-header__title">MOJEDAAR DROPS</h1>
+      <p class="woocommerce-breadcrumb">
+        <span>Signature sock collection</span>
+      </p>
+    </header>
+
     <ul class="products" id="product-grid">
-      <li class="product">
-        <div class="woocommerce-loop-product__title">Loading socks...</div>
-      </li>
+      <!-- Loaded dynamically via JS -->
     </ul>
   </main>
 
   <script>
-    // ⚠️ REPLACE THIS later with your actual Hostinger domain (e.g. https://mojedaar.com)
-    const WP_HOSTINGER_URL = "https://your-wordpress-domain.com"; 
+    // Pure Frontend Cart & Store Logic
+    const catalogData = [
+      { id: 1, name: "Neon Stripe Socks", price: 14.99, on_sale: true, img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=400" },
+      { id: 2, name: "Checkerboard Crew", price: 18.00, on_sale: false, img: "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=400" },
+      { id: 3, name: "Retro Wave Tube", price: 12.50, on_sale: false, img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400" },
+      { id: 4, name: "Electric Purple Ankle", price: 16.00, on_sale: true, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" }
+    ];
 
-    async function fetchProducts() {
+    let cart = [];
+
+    function renderProducts() {
       const grid = document.getElementById('product-grid');
-      try {
-        const response = await fetch(`${WP_HOSTINGER_URL}/wp-json/wc/v3/products?per_page=12`);
-        if (!response.ok) throw new Error('API Request Failed');
-        const products = await response.json();
-        renderProducts(products);
-      } catch (err) {
-        // Shows demo products if Hostinger is not connected yet
-        renderDemoProducts();
-      }
-    }
-
-    function renderProducts(products) {
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = products.map(p => `
-        <li class="product">
-          ${p.on_sale ? '<span class="onsale">Sale!</span>' : ''}
-          <img src="${p.images[0]?.src || 'https://via.placeholder.com/300'}" alt="${p.name}" />
-          <h2 class="woocommerce-loop-product__title">${p.name}</h2>
-          <span class="price">$${p.price}</span>
-          <button class="button" onclick="addToCart(${p.id})">Add to Cart</button>
-        </li>
-      `).join('');
-    }
-
-    function renderDemoProducts() {
-      const demoData = [
-        { id: 1, name: "Neon Stripe Socks", price: "14.99", on_sale: true, img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=400" },
-        { id: 2, name: "Checkerboard Crew", price: "18.00", on_sale: false, img: "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=400" },
-        { id: 3, name: "Retro Wave Tube", price: "12.50", on_sale: false, img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400" },
-        { id: 4, name: "Electric Purple Ankle", price: "16.00", on_sale: true, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" }
-      ];
-
-      const grid = document.getElementById('product-grid');
-      grid.innerHTML = demoData.map(p => `
+      grid.innerHTML = catalogData.map(p => `
         <li class="product">
           ${p.on_sale ? '<span class="onsale">Sale!</span>' : ''}
           <img src="${p.img}" alt="${p.name}" />
           <h2 class="woocommerce-loop-product__title">${p.name}</h2>
-          <span class="price">$${p.price}</span>
+          <span class="price">$${p.price.toFixed(2)}</span>
           <button class="button" onclick="addToCart(${p.id})">Add to Cart</button>
         </li>
       `).join('');
     }
 
     function addToCart(productId) {
-      window.location.href = `${WP_HOSTINGER_URL}/cart/?add-to-cart=${productId}`;
+      const product = catalogData.find(item => item.id === productId);
+      if (product) {
+        cart.push(product);
+        document.getElementById('cart-count').innerText = cart.length;
+        alert(`${product.name} added to cart!`);
+      }
     }
 
-    document.addEventListener('DOMContentLoaded', fetchProducts);
+    function openCart() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+      } else {
+        const items = cart.map(item => `- ${item.name}: $${item.price.toFixed(2)}`).join('\n');
+        alert(`Items in Cart:\n\n${items}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProducts);
   </script>
 </body>
 </html>

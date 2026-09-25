@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOJEDAAR — Custom Socks Store</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="woocommerce">
+
+  <header class="woocommerce-products-header">
+    <h1 class="woocommerce-products-header__title">MOJEDAAR SOCKS</h1>
+    <p class="woocommerce-breadcrumb">
+      <a href="#">Home</a> / <span>Shop</span>
+    </p>
+  </header>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+    <ul class="products" id="product-grid">
+      <li class="product">
+        <div class="woocommerce-loop-product__title">Loading socks...</div>
+      </li>
+    </ul>
+  </main>
+
+  <script>
+    // ⚠️ REPLACE THIS later with your actual Hostinger domain (e.g. https://mojedaar.com)
+    const WP_HOSTINGER_URL = "https://your-wordpress-domain.com"; 
+
+    async function fetchProducts() {
+      const grid = document.getElementById('product-grid');
+      try {
+        const response = await fetch(`${WP_HOSTINGER_URL}/wp-json/wc/v3/products?per_page=12`);
+        if (!response.ok) throw new Error('API Request Failed');
+        const products = await response.json();
+        renderProducts(products);
+      } catch (err) {
+        // Shows demo products if Hostinger is not connected yet
+        renderDemoProducts();
+      }
+    }
+
+    function renderProducts(products) {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = products.map(p => `
+        <li class="product">
+          ${p.on_sale ? '<span class="onsale">Sale!</span>' : ''}
+          <img src="${p.images[0]?.src || 'https://via.placeholder.com/300'}" alt="${p.name}" />
+          <h2 class="woocommerce-loop-product__title">${p.name}</h2>
+          <span class="price">$${p.price}</span>
+          <button class="button" onclick="addToCart(${p.id})">Add to Cart</button>
+        </li>
+      `).join('');
+    }
+
+    function renderDemoProducts() {
+      const demoData = [
+        { id: 1, name: "Neon Stripe Socks", price: "14.99", on_sale: true, img: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=400" },
+        { id: 2, name: "Checkerboard Crew", price: "18.00", on_sale: false, img: "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=400" },
+        { id: 3, name: "Retro Wave Tube", price: "12.50", on_sale: false, img: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=400" },
+        { id: 4, name: "Electric Purple Ankle", price: "16.00", on_sale: true, img: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400" }
+      ];
+
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = demoData.map(p => `
+        <li class="product">
+          ${p.on_sale ? '<span class="onsale">Sale!</span>' : ''}
+          <img src="${p.img}" alt="${p.name}" />
+          <h2 class="woocommerce-loop-product__title">${p.name}</h2>
+          <span class="price">$${p.price}</span>
+          <button class="button" onclick="addToCart(${p.id})">Add to Cart</button>
+        </li>
+      `).join('');
+    }
+
+    function addToCart(productId) {
+      window.location.href = `${WP_HOSTINGER_URL}/cart/?add-to-cart=${productId}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchProducts);
+  </script>
+</body>
+</html>

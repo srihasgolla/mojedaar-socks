@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Fredoka:wght@400;600;700&display=swap');
+
+/* =========================================================
+   MOJEDAAR — WOOCOMMERCE DESIGN
+   ========================================================= */
+
+/* ---------- MOJEDAAR COLORS ---------- */
+
+:root {
+  --moj-cream: #fff7e8;
+  --moj-purple: #302047;
+  --moj-pink: #f05a9d;
+  --moj-yellow: #ffd928;
+  --moj-orange: #ff7a00;
+  --moj-white: #ffffff;
+}
+
+/* ---------- GLOBAL ---------- */
+
+html,
+body {
+  background: var(--moj-cream) !important;
+  color: var(--moj-purple) !important;
+}
+
+body {
+  font-family: "Fredoka", Arial, sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Archivo Black", Arial, sans-serif !important;
+  color: var(--moj-purple) !important;
+}
+
+a {
+  color: var(--moj-purple);
+}
+
+/* =========================================================
+   WOOCOMMERCE SHOP
+   ========================================================= */
+
+.woocommerce,
+.woocommerce-page {
+  background: var(--moj-cream) !important;
+  color: var(--moj-purple) !important;
+}
+
+/* Shop title */
+
+.woocommerce-products-header {
+  text-align: center !important;
+  margin-bottom: 45px !important;
+}
+
+.woocommerce-products-header__title {
+  color: var(--moj-purple) !important;
+  font-family: "Archivo Black", Arial, sans-serif !important;
+  font-size: 52px !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+}
+
+/* Breadcrumb */
+
+.woocommerce .woocommerce-breadcrumb {
+  color: var(--moj-purple) !important;
+  font-weight: 600 !important;
+}
+
+.woocommerce .woocommerce-breadcrumb a {
+  color: var(--moj-pink) !important;
+}
+
+/* =========================================================
+   PRODUCT GRID
+   ========================================================= */
+
+.woocommerce ul.products {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 30px !important;
+  margin: 35px 0 !important;
+  padding: 0 !important;
+}
+
+/* Product card */
+
+.woocommerce ul.products li.product {
+  width: auto !important;
+  float: none !important;
+  margin: 0 !important;
+  padding: 18px !important;
+
+  background: var(--moj-white) !important;
+
+  border: 3px solid var(--moj-purple) !important;
+  border-radius: 22px !important;
+
+  box-shadow: 7px 7px 0 var(--moj-purple) !important;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+/* Product hover */
+
+.woocommerce ul.products li.product:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 11px 11px 0 var(--moj-purple) !important;
+}
+
+/* Product image */
+
+.woocommerce ul.products li.product img {
+  width: 100% !important;
+  height: auto !important;
+
+  border-radius: 15px !important;
+
+  margin-bottom: 15px !important;
+}
+
+/* Product title */
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  color: var(--moj-purple) !important;
+
+  font-family: "Archivo Black", Arial, sans-serif !important;
+
+  font-size: 21px !important;
+  line-height: 1.1 !important;
+
+  text-transform: uppercase !important;
+
+  padding: 0 !important;
+}
+
+/* Product price */
+
+.woocommerce ul.products li.product .price {
+  color: var(--moj-purple) !important;
+
+  font-size: 20px !important;
+  font-weight: 700 !important;
+
+  margin: 10px 0 !important;
+}
+
+/* Old price */
+
+.woocommerce ul.products li.product .price del {
+  opacity: 0.5 !important;
+}
+
+/* Sale price */
+
+.woocommerce ul.products li.product .price ins {
+  color: var(--moj-pink) !important;
+  text-decoration: none !important;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce ul.products li.product .button {
+  display: inline-block !important;
+
+  background: var(--moj-pink) !important;
+  color: var(--moj-purple) !important;
+
+  border: 3px solid var(--moj-purple) !important;
+  border-radius: 999px !important;
+
+  font-family: "Archivo Black", Arial, sans-serif !important;
+
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+
+  padding: 12px 20px !important;
+
+  box-shadow: 4px 4px 0 var(--moj-purple) !important;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease !important;
+}
+
+/* Button hover */
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce ul.products li.product .button:hover {
+  background: var(--moj-yellow) !important;
+  color: var(--moj-purple) !important;
+
+  transform: translate(-2px, -2px) !important;
+
+  box-shadow: 6px 6px 0 var(--moj-purple) !important;
+}
+
+/* =========================================================
+   SALE BADGE
+   ========================================================= */
+
+.woocommerce span.onsale {
+  background: var(--moj-yellow) !important;
+  color: var(--moj-purple) !important;
+
+  border: 3px solid var(--moj-purple) !important;
+
+  border-radius: 999px !important;
+
+  font-family: "Archivo Black", Arial, sans-serif !important;
+  font-weight: 900 !important;
+
+  min-width: 65px !important;
+  min-height: 30px !important;
+
+  padding: 8px 12px !important;
+
+  line-height: 1 !important;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .woocommerce ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+  }
+
+  .woocommerce-products-header__title {
+    font-size: 42px !important;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .woocommerce ul.products {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  .woocommerce ul.products li.product {
+    padding: 12px !important;
+
+    border-width: 2px !important;
+
+    border-radius: 15px !important;
+
+    box-shadow: 4px 4px 0 var(--moj-purple) !important;
+  }
+
+  .woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: 16px !important;
+  }
+
+  .woocommerce ul.products li.product .price {
+    font-size: 17px !important;
+  }
+
+  .woocommerce ul.products li.product .button {
+    font-size: 11px !important;
+
+    padding: 9px 12px !important;
+
+    box-shadow: 3px 3px 0 var(--moj-purple) !important;
+  }
+
+  .woocommerce-products-header__title {
+    font-size: 36px !important;
+  }
+}

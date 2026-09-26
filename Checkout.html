@@ -621,4 +621,5 @@
 </footer>
 
 
+<script id="mojedaar-navigation">document.addEventListener("click",function(e){const el=e.target.closest("[data-path]");if(!el)return;const routes={home:"index.html",shop:"Shop.html","new-drops":"Shop.html",ankle:"Shop.html",crew:"Shop.html","no-show":"Shop.html",cart:"Cart.html",checkout:"Checkout.html",product:"Mirchi Masala Crew Sox.html"};const p=el.getAttribute("data-path");if(routes[p]){e.preventDefault();location.href=routes[p]}});document.addEventListener("DOMContentLoaded",function(){const s=document.querySelector("button[aria-label=\"Search\"]");if(s)s.addEventListener("click",function(){const q=prompt("What are you looking for?");if(q&&q.trim())location.href="Shop.html?search="+encodeURIComponent(q.trim())});const m=document.querySelector("button[aria-label=\"Fun Mood\"]");if(m)m.addEventListener("click",function(){location.href="Shop.html"})});</script>
 </body></html>

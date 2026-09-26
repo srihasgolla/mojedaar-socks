@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>Mojadaar — India's Funkiest Sock Universe</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Fredoka:wght@400..700&amp;family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
+
+/* Continuous Smooth Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+/* Fluid Action Button Micro-Interactions */
+.fluid-btn {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fluid-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 0 #0f0d5a;
+}
+.fluid-btn:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 1px 0 #0f0d5a;
+}
+
+/* Icon bouncing/lifting animations */
+.icon-bounce {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.icon-bounce:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 3px 5px 0 #0f0d5a;
+}
+.icon-bounce:active {
+  transform: scale(0.95);
+  box-shadow: 1px 1px 0 #0f0d5a;
+}
+
+/* Neo-brutalist tactile shadows & card spring micro-interactions */
+.neo-shadow-sm { box-shadow: 2px 2px 0px #0f0d5a; }
+.neo-shadow-md { box-shadow: 4px 4px 0px #0f0d5a; }
+.neo-shadow-lg { box-shadow: 6px 6px 0px #0f0d5a; }
+
+.brutal-card-hover {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+.brutal-card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 6px 6px 0px #0f0d5a !important;
+}
+
+/* Seamless logo blending */
+.logo-blend-multiply {
+  mix-blend-mode: multiply;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#0f0d5a", "surface": "#fcf8ff", "on-tertiary-fixed": "#370e00", "tertiary-container": "#cb4900", "on-primary": "#ffffff", "tertiary": "#a23900", "on-secondary-fixed": "#231b00", "on-error-container": "#93000a", "on-error": "#ffffff", "secondary-fixed": "#ffe082", "error": "#ba1a1a", "on-secondary-container": "#6f5900", "sticker-white": "#FFFFFF", "surface-container-low": "#f5f2ff", "inverse-on-surface": "#f2efff", "surface-variant": "#e1e0ff", "on-tertiary-container": "#fffbff", "on-secondary-fixed-variant": "#564500", "outline": "#906e75", "ink-black": "#0A0A28", "secondary-fixed-dim": "#eec200", "tertiary-fixed": "#ffdbce", "secondary-container": "#fecf00", "on-primary-fixed": "#3f0019", "primary-container": "#e4006c", "inverse-primary": "#ffb1c3", "surface-container": "#eeecff", "on-primary-fixed-variant": "#8f0041", "surface-container-high": "#e8e6ff", "inverse-surface": "#26276e", "alert-badge": "#FF0055", "background": "#fcf8ff", "surface-bright": "#fcf8ff", "surface-container-lowest": "#ffffff", "surface-dim": "#d7d6ff", "primary-fixed-dim": "#ffb1c3", "on-secondary": "#ffffff", "secondary": "#725c00", "surface-tint": "#bb0058", "on-tertiary-fixed-variant": "#7f2b00", "error-container": "#ffdad6", "on-background": "#0f0d5a", "tertiary-fixed-dim": "#ffb599", "outline-variant": "#e5bcc4", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9e0", "on-tertiary": "#ffffff", "primary": "#b60055", "surface-container-highest": "#e1e0ff", "canvas-cream": "#FFF7D6", "on-surface-variant": "#5c3f45" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "4rem", "gutter-desktop": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-desktop": "3rem", "gutter": "1.25rem", "space-xl": "2.5rem", "margin": "1.25rem", "space-sm": "0.5rem" }, "fontFamily": { "display-hero": [ "Archivo Black", "Archivo Narrow", "Rubik", "sans-serif" ], "body-lg": [ "Rubik", "Fredoka", "sans-serif" ], "headline-lg": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "display-hero-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "body-md": [ "Rubik", "Fredoka", "sans-serif" ], "headline-xl-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-xl": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "title-md": [ "Rubik", "Fredoka", "sans-serif" ], "label-badge": [ "Fredoka", "Rubik", "sans-serif" ], "label-ticker": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-md": [ "Archivo Black", "Rubik", "sans-serif" ] }, "fontSize": { "display-hero": [ "84px", { "lineHeight": "82px", "letterSpacing": "-0.03em", "fontWeight": "900" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "500" } ], "headline-lg": [ "30px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "800" } ], "display-hero-mobile": [ "44px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "900" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-xl-mobile": [ "30px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "800" } ], "headline-xl": [ "44px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "title-md": [ "17px", { "lineHeight": "22px", "fontWeight": "700" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "800" } ], "label-ticker": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "800" } ], "headline-md": [ "20px", { "lineHeight": "26px", "fontWeight": "700" } ] } } } };</script></head><body class="bg-[#FFFDF5] text-on-surface font-body-md text-body-md min-h-screen selection:bg-secondary-container selection:text-ink-black antialiased"><div class="fixed top-0 left-0 right-0 z-50 w-full flex flex-col"><!-- 1. HOMEPAGE-MATCHED HEADER NAVIGATION --><header class="w-full bg-[#FFFDF5] border-b-2 border-on-surface shadow-[0_2px_0_#0f0d5a] select-none"><div class="h-20 max-w-7xl mx-auto px-4 lg:px-8 flex items-center justify-between gap-4"><!-- 3D 'मोजDAAR' brand logo with multiply blending --><a class="flex items-center gap-2 group bg-transparent" data-path="home" href="#"><img alt="मोजDAAR Logo" class="h-14 w-auto object-contain logo-blend-multiply bg-transparent transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOzW8kgO7UDDOWAMTu1q4ARxsuwlY3ktDyicOPNF4_JJG0ZcbnChydX6pjRuOya27d5Z3Oyx6-CtxF1-EIs2PeMmuxDovMlWGAzLP23T_FaWZ2-CnIrSIUv222KPRoLJUhND_6YPYcZ2urhZ11UEU7mhMlLZulN82KLwAHl0PyDRaRc2kKNAmCtpRJlp38i3f2HxG6QYwAPlU7YekD8IDQjcm6-hLsA2l47qR4E2X1KpjnIMDZGykZ_lfu8bUSt7yFuew"/></a><!-- Center Navigation Pills --><nav class="hidden md:flex items-center gap-5 lg:gap-7 font-black uppercase text-sm tracking-wider text-on-surface"><a aria-current="page" class="px-4 py-1.5 rounded-full bg-secondary-container text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] transition-all" data-path="shop" href="#">Shop</a><a class="hover:text-primary transition-colors py-1.5" data-path="new-drops" href="#">New Drops</a><a class="hover:text-primary transition-colors py-1.5" data-path="ankle" href="#">Ankle</a><a class="hover:text-primary transition-colors py-1.5" data-path="crew" href="#">Crew</a><a class="hover:text-primary transition-colors py-1.5" data-path="no-show" href="#">No-show</a><a class="hover:text-primary transition-colors py-1.5" data-path="about" href="#">About</a></nav><!-- Right Utility Action Circles matching Homepage --><div class="flex items-center gap-3"><!-- 1: Search Button (Yellow) --><button aria-label="Search" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FFE043] flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a]" type="button"><span class="material-symbols-outlined text-[20px] font-black">search</span></button><!-- 2: Sunglasses Emoji Button (Orange) --><button aria-label="Fun Mood" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FF7F29] flex items-center justify-center text-xl shadow-[2px_2px_0_#0f0d5a]" type="button"><span>😎</span></button><!-- 3: Shopping Bag Counter (Pink with 3 badge) --><a aria-label="Shopping Bag" class="icon-bounce relative w-11 h-11 rounded-full border-2 border-on-surface bg-[#D8005A] flex items-center justify-center text-sticker-white shadow-[2px_2px_0_#0f0d5a]" data-path="cart" href="#"><span class="material-symbols-outlined text-[20px]">shopping_cart</span><span class="absolute -top-1.5 -right-1.5 bg-[#FFDE00] text-on-surface font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-on-surface shadow-[1px_1px_0_#0f0d5a]">3</span></a></div></div></header><!-- 2. EXACT HOMEPAGE MAGENTA TICKER MARQUEE BAR --><div class="w-full bg-[#E4006C] text-sticker-white py-2 overflow-hidden border-b-2 border-on-surface select-none"><div class="animate-marquee-infinite uppercase font-label-ticker text-[13px] tracking-widest font-black"><div class="flex items-center gap-6 pr-6"><span>✦ YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦ 🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦</span><span>✦ YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦ 🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦</span></div><div aria-hidden="true" class="flex items-center gap-6 pr-6"><span>✦ YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦ 🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦</span><span>✦ YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦ 🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦</span></div></div></div></div><main class="w-full pt-32 bg-[#FFFDF5] min-h-screen"><div class="flex flex-col w-full">
+<!-- Dynamic Notification / Live Stats Mini Banner -->
+<section class="w-full bg-canvas-cream py-3 px-4 sm:px-gutter md:px-gutter-desktop border-b-2 border-on-surface">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3 font-label-badge text-label-badge uppercase tracking-wider text-ink-black">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-alert-badge animate-ping"></span>
+<span class="font-black text-primary-container">4,819 PAIRS DISPATCHED THIS WEEK</span>
+<span class="hidden sm:inline text-outline/50">/</span>
+<span class="hidden sm:inline font-medium text-on-surface-variant">NEXT DISPATCH AT 4:00 PM IST</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>FREE SHIPPING OVER ₹999</span>
+</span>
+<span class="bg-secondary-container px-2 py-0.5 rounded-md text-ink-black font-extrabold border border-on-surface shadow-[1px_1px_0_#0f0d5a]">FITS UK 6–11</span>
+</div>
+</div>
+</section>
+<!-- Hero Billboard Section -->
+<section class="w-full py-8 md:py-12 bg-[#FFFDF5] px-4 sm:px-gutter md:px-gutter-desktop">
+<div class="max-w-7xl mx-auto bg-surface-container rounded-3xl p-6 sm:p-10 relative overflow-hidden border-3 border-on-surface shadow-[6px_6px_0_#0f0d5a]">
+<!-- Decorative Backdrop Graphic Blurs -->
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-secondary-container/30 blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-72 h-72 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+<div class="flex flex-col gap-4 max-w-2xl">
+<div class="flex flex-wrap items-center gap-2">
+<span class="bg-primary-container text-on-primary-container px-3.5 py-1.5 rounded-full font-label-badge text-label-badge uppercase tracking-wider border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center gap-1.5 font-black">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+              ALL THE SOXY DROPS
+            </span>
+<span class="bg-sticker-white text-ink-black px-3.5 py-1.5 rounded-full font-label-badge text-label-badge uppercase tracking-wider border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] font-extrabold">
+              100% COMBED COTTON · SEAMLESS TOE
+            </span>
+</div>
+<h1 class="font-headline-xl text-[38px] sm:text-headline-xl uppercase tracking-tight text-[#0A0744] font-black leading-none">
+            ALL THE SOX. <br/>
+<span class="text-primary-container inline-block underline decoration-secondary-container decoration-wavy">ZERO BORING.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg font-medium">
+            Designed in India for wild ankles, sneakerheads, and folks who refuse to wear plain black socks ever again. Anti-slip cuffs guaranteed.
+          </p>
+</div>
+<!-- Quick Summary Stats Card -->
+<div class="flex items-center gap-3 sm:gap-4 bg-sticker-white p-4 sm:p-5 rounded-2xl border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] shrink-0">
+<div class="flex flex-col items-start px-2">
+<span class="font-headline-lg text-headline-lg text-ink-black font-black">200K+</span>
+<span class="font-label-badge text-label-badge uppercase text-on-surface-variant font-bold">Happy Ankles</span>
+</div>
+<div class="w-px h-10 bg-outline/20"></div>
+<div class="flex flex-col items-start px-2">
+<div class="flex items-center gap-1 text-secondary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline-lg text-headline-lg text-ink-black font-black">4.9</span>
+</div>
+<span class="font-label-badge text-label-badge uppercase text-on-surface-variant font-bold">Average Rating</span>
+</div>
+<div class="w-px h-10 bg-outline/20"></div>
+<div class="flex flex-col items-start px-2">
+<span class="font-headline-lg text-headline-lg text-primary-container font-black">18</span>
+<span class="font-label-badge text-label-badge uppercase text-on-surface-variant font-bold">Signature Pairs</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter & Mood Bar Section -->
+<section class="w-full bg-[#FFFDF5] px-4 sm:px-gutter md:px-gutter-desktop sticky top-28 z-30 transition-all">
+<div class="max-w-7xl mx-auto bg-sticker-white p-4 rounded-2xl border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] flex flex-col gap-4">
+<!-- Top Row: Category Tabs & Sorting Controls -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<!-- Category Segment Controls -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 md:pb-0" id="category-tabs">
+<button class="category-btn px-4 py-2 rounded-full font-title-md text-body-md whitespace-nowrap bg-on-surface text-sticker-white border-2 border-on-surface font-bold transition-all shadow-[2px_2px_0_#0f0d5a]" data-category="all" type="button">
+            All Pairs (18)
+          </button>
+<button class="category-btn px-4 py-2 rounded-full font-title-md text-body-md whitespace-nowrap bg-surface-container text-on-surface border-2 border-on-surface font-semibold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[2px_2px_0_#0f0d5a]" data-category="ankle" type="button">
+            Ankle Sox (6)
+          </button>
+<button class="category-btn px-4 py-2 rounded-full font-title-md text-body-md whitespace-nowrap bg-surface-container text-on-surface border-2 border-on-surface font-semibold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[2px_2px_0_#0f0d5a]" data-category="crew" type="button">
+            Crew Sox (7)
+          </button>
+<button class="category-btn px-4 py-2 rounded-full font-title-md text-body-md whitespace-nowrap bg-surface-container text-on-surface border-2 border-on-surface font-semibold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[2px_2px_0_#0f0d5a]" data-category="noshow" type="button">
+            No-Show Sox (5)
+          </button>
+<button class="category-btn px-4 py-2 rounded-full font-title-md text-body-md whitespace-nowrap bg-primary-container text-on-primary-container border-2 border-on-surface font-bold hover:bg-primary transition-all shadow-[2px_2px_0_#0f0d5a] flex items-center gap-1" data-category="bundle" type="button">
+<span class="material-symbols-outlined text-[16px]">redeem</span> Bundles (3)
+          </button>
+</div>
+<!-- Sort, Size, and Price Filters -->
+<div class="flex items-center flex-wrap gap-2.5">
+<!-- Sort Dropdown Container -->
+<div class="relative flex items-center bg-surface-container rounded-full px-3 py-1.5 border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+<span class="material-symbols-outlined text-ink-black text-[18px] mr-1.5">swap_vert</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase mr-1 font-bold">Sort:</span>
+<select class="bg-transparent font-title-md text-body-md font-bold text-ink-black focus:outline-none cursor-pointer pr-2" id="sort-select">
+<option value="popular">Most Popular</option>
+<option value="newest">Newest Drops</option>
+<option value="low-high">Price: Low to High</option>
+<option value="high-low">Price: High to Low</option>
+</select>
+</div>
+<!-- Price Max Filter -->
+<div class="hidden lg:flex items-center gap-2 bg-surface-container rounded-full px-3.5 py-1.5 border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">Max ₹</span>
+<input class="w-20 accent-primary-container cursor-pointer" id="price-slider" max="600" min="300" step="50" type="range" value="600"/>
+<span class="font-title-md text-body-md font-bold text-ink-black" id="price-label">₹600</span>
+</div>
+<!-- Free Size indicator badge -->
+<span class="hidden sm:inline-flex items-center gap-1 bg-canvas-cream text-ink-black font-label-badge text-label-badge px-3 py-1.5 rounded-full font-black border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+<span class="material-symbols-outlined text-[14px]">straighten</span> FREE SIZE (UK 6-11)
+          </span>
+</div>
+</div>
+<!-- Bottom Row: Shop by Mood Pill Carousels -->
+<div class="pt-2 flex items-center gap-2 overflow-x-auto pb-1" id="mood-filters">
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold shrink-0 pr-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary-container">palette</span> VIBE:
+        </span>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="all" type="button">
+          ✨ All Vibes
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="colour" type="button">
+          🌈 Colour Obsessed
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="weird" type="button">
+          🧠 Weird But Wonderful
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="foodie" type="button">
+          🍕 Foodie Feet
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="chaos" type="button">
+          😈 Chaos Mode
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="cute" type="button">
+          🧸 Cute AF
+        </button>
+<button class="mood-pill shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container border-2 border-on-surface font-body-md text-body-md text-on-surface font-bold hover:bg-secondary-container hover:text-ink-black transition-all shadow-[1.5px_1.5px_0_#0f0d5a]" data-mood="desi" type="button">
+          🇮🇳 India But Make It Fun
+        </button>
+</div>
+</div>
+</section>
+<!-- Product Grid Section -->
+<section class="w-full bg-[#FFFDF5] py-8 md:py-12 px-4 sm:px-gutter md:px-gutter-desktop">
+<div class="max-w-7xl mx-auto">
+<!-- Section subheader & live counter -->
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-baseline gap-3">
+<h2 class="font-headline-lg text-headline-lg font-black text-on-surface uppercase">FRESH FEET SELECTION</h2>
+<span class="font-label-badge text-label-badge bg-secondary-container text-ink-black font-extrabold px-2.5 py-1 rounded-md border-2 border-on-surface shadow-[1.5px_1.5px_0_#0f0d5a]" id="active-count">8 STYLES SHOWING</span>
+</div>
+<div class="hidden sm:flex items-center gap-2 font-label-badge text-label-badge text-on-surface-variant font-bold">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+          COMFORT FIT ARCH SUPPORT
+        </div>
+</div>
+<!-- Main Catalog Grid (8 Neo-Brutalist cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7" id="product-grid">
+<!-- CARD 1: Mirchi Masala -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="crew" data-mood="foodie desi" data-popular="128" data-price="449">
+<div>
+<!-- Badge & Wishlist overlay -->
+<div class="relative w-full aspect-square rounded-2xl bg-canvas-cream overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-alert-badge text-on-primary font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                NEW
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" data-alt="Chilli print novelty graphic socks in cream with bright red peppers and navy accents folded neatly on a pop yellow surface, sharp studio editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBe7sLqtu75aApm7atcY572uo-l0KlOMozy7VwT4C0-0Xc0hcu2ZaytoxbFTX-DdRjZ1C_bCEyHP3bHek5RzuAdFB57kHaoyx-UDTEXpVCEGSW5uG5NX3z7ib5kewQuCznVTQ1XAq7Qaxbduv6joUwRidkQqSUWL7NuO_tBiopfW-Wc1Z33nWYqgw__MJ9H3D2lWYwYzMozC1S5NISMDCltiGER0O5DGMqzYaHtfpbc5RuF31ASLusO5w"/>
+</div>
+<!-- Product info -->
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">CREW CUT · COMBED COTTON</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 (128)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Mirchi Masala
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cream / Chilli Pattern Print</p>
+</div>
+</div>
+<!-- Price & Action Button -->
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-on-surface">₹449</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">MRP</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 2: Zigzag Zindagi -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="ankle" data-mood="colour chaos" data-popular="242" data-price="399">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-secondary-container/20 overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-secondary-container text-on-surface font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                BESTSELLER
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" data-alt="Vibrant neon pink ankle sock with bold electric orange and black lightning bolt zigzag lines lying flat on a bright yellow studio background, high contrast pop art streetwear product photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9JpR0-Z_3G4bnPckc7Zvk4I-dCKG8_b2OdECJ-Efqxaoi3NOuJKcPiphALDzXc4vk_GQlpkJHmVUjjZcu5uC7e_odroRvqZnxP5FO8R4iIEwJkzeeM2WuXCcD9qriiD0SgY7dqq6bdPmRxlt0I-KaTtvJKztulcSk7XfO2DCQI0IDzFM1stu7mUsKUxauDoXPsCOyURX3DhGmCiXA494aP9Gl2Yiv8w1X-TVaQpmK-9LAV0kTW7KyZA"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">ANKLE SOX · SNUG RIBBED</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8 (242)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Zigzag Zindagi
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Pink / Electric Orange Flash</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-primary-container">₹399</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through font-semibold">₹549</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 3: Smiley Checkmate -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="ankle" data-mood="weird cute" data-popular="89" data-price="429">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-surface-container overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-alert-badge text-on-primary font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                LOW STOCK
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img alt="Smiley Checkmate socks" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">ANKLE SOX · HEAVY CUSHION</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.7 (89)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Smiley Checkmate
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Navy / Yellow Retro Checkerboard</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-primary-container">₹429</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through font-semibold">₹599</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 4: Matchbox Mania -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="crew" data-mood="desi weird" data-popular="310" data-price="499">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-canvas-cream overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-tertiary-container text-on-tertiary-container font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                LIMITED
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" data-alt="Pair of mid-calf socks with vintage Indian matchbox label illustrations of horses and riders on orange and cream cotton knit, set against a rich electric cobalt blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkd2kK3XY1dRZ2DVUvpkn-p0JAeq8ia8FbYxBnGh5QXJJIA9eRR4ycFNeybfdhY8EstRWyw-nSouuiMon0qVAi25S90xId5C8n-tpLug3Gd-1N4UAOgDcoszZmI91XGfco_5AM6e3JUlnkrTERWT7FUWhd38yvRGRbW0RPp7tFbvqKj3TAJdkIdlr_-lP_xYOCfYELXAZtb-qrRMBGr51hQ0HXUT76Q_jDCz8kr0S0j4F8G22i0fw8Mw"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">MID-CALF · DESI GRAPHICS</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 (310)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Matchbox Mania
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tangerine Orange / Vintage Label</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-on-surface">₹499</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">MRP</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 5: Bijli Stripes -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="crew" data-mood="colour chaos" data-popular="64" data-price="379">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-[#FFF7E8] overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-alert-badge text-on-primary font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                NEW
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img alt="Bijli Stripes socks" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1VyBS5-JGqJAcijE-JW8Ut7CHWfO0k5oYgEOxc0E8_Og6dY4a4hMhvhbrHcQqHanNwSyHfPCqR9LK9vHBdzZ4_kye6ARngs9niGSEkElOcBV1bAQ4PqnZ-JTAi8ugUaMrBWQ_AWCjFh39O8x4kqFbX0_Q4wxyLo4fysc1ujhan7SHXPKhfH2ir-U7TdUHOII15NPtHYgRFvgKstkjtZZlUIiByHTzCE7twRg08Q_7MeM_ZpdZuZnjamchob"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">CREW · DOUBLE LAYER HEEL</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.6 (64)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Bijli Stripes
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Hot Pink / Acid Yellow Band</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-primary-container">₹379</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through font-semibold">₹499</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 6: Swirl Trip -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="noshow" data-mood="colour chaos cute" data-popular="195" data-price="349">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-[#FFE200] overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-secondary-container text-on-surface font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                BESTSELLER
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img alt="Swirl Trip socks" class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1W_l7ljRDSFLCPhROftiYVn__PhzrXBY_CpyMFoLlSEWd0EEmEMHkYpn7c8GlHodZL-e9wPlKa30l7kbbC3M4AYMqvSFiYNSHld22Yzi4pqIAX1iyRi94e8VZ2qBjLuZfy8Gg5SxuwUijKqZTbMkZYybDq5s9kLOX9q0re8a3IDS5siRTkq1jnhkADPnml6L_4opSELtkjoNSoFOQEMs5i4hCHMFpblLkYASKTmIoLZzXa0lPbxbjnNTHZ6"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">NO-SHOW · SILICONE GRIP</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8 (195)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Swirl Trip
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Orange / Bubblegum Swirl</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-on-surface">₹349</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">MRP</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 7: Mumbai Meri Jaan -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="crew" data-mood="desi weird" data-popular="42" data-price="449">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-secondary-container/20 overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-primary-container text-on-primary-container font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                FRESH DROP
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" data-alt="Playful funky socks covered with black and canary yellow auto rickshaws and retro meter fare icons, styled over a bold magenta backdrop for Indian streetwear apparel catalogue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoFp1Otnb_T97CfmO-ewZI18S_cM9x9aVTBSu3BqvPFE2p89Ji2swQcASc1mcPu5_fuuu63jcEHW7ZR7OtFglkwZnTGD4Qdf7n5nC8mieCNkJe3xcbU2JVaDZQLHtlQ9JETk1EXY6HIV028OaGCfe5Ic7AMk-HnygJUrDBNm5KguPSuK3PxL6sh2LvKyD_mBNz9ls3RqBIBUuWJL2pmwE92mIATPXlQ8XennEOUal4rIo-CWVSgNIJ1g"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">CREW · REINFORCED ARCH</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9 (42)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Mumbai Meri Jaan
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Black / Yellow Auto Rickshaw Repeat</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-on-surface">₹449</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">MRP</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+<!-- CARD 8: Masala Chai & Parle -->
+<article class="product-card brutal-card-hover group relative bg-sticker-white rounded-3xl p-4 flex flex-col justify-between border-3 border-on-surface shadow-[4px_4px_0_#0f0d5a]" data-category="crew" data-mood="foodie desi cute" data-popular="88" data-price="449">
+<div>
+<div class="relative w-full aspect-square rounded-2xl bg-canvas-cream overflow-hidden flex items-center justify-center p-3 border-2 border-on-surface">
+<span class="absolute top-2.5 left-2.5 z-10 bg-alert-badge text-on-primary font-label-badge text-label-badge font-black uppercase px-2.5 py-1 rounded-full border border-on-surface shadow-[1px_1px_0_#0f0d5a]">
+                HOT
+              </span>
+<button aria-label="Add to wishlist" class="wishlist-btn absolute top-2.5 right-2.5 z-10 w-9 h-9 rounded-full bg-sticker-white text-on-surface border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center justify-center hover:bg-secondary-container hover:text-alert-badge transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">favorite</span>
+</button>
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300" data-alt="Warm biscuit tan crew socks featuring whimsical cutting chai kettles, steaming glasses and dipped biscuits knitted pattern, shot in punchy minimalist pop art lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB14DRZNq_c74O0VJk9hpj-5EP9sLuAW5rSNGorhVaWHXdndMNZjQZ134z21eANL6aBQwm0gMQ8YbgpLAcn6lDhesNhmzGP8y2xEOwE_hoRiKamzln2yWe8JYXKf9waIVi_tGcJN1ynSPMGkliIUk8XYuFDd7UfkbFDkKO5abxE4M-OUV3iiAaT2D3dVIXckRJTAhlFPZMs9V3L1R_hodL_XZoZt3xGiJZoQ3EXRgQ_MCxC-ffSy98YHA"/>
+</div>
+<div class="mt-4 flex flex-col gap-1.5">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-badge text-label-badge uppercase font-bold text-on-surface-variant tracking-wider">CREW · SEAMLESS TOE</span>
+<div class="flex items-center gap-0.5 text-secondary font-label-badge text-label-badge font-black">
+<span class="material-symbols-outlined text-[15px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>5.0 (88)</span>
+</div>
+</div>
+<h3 class="font-title-md text-title-md font-black text-on-surface group-hover:text-primary-container transition-colors uppercase leading-snug">
+                Masala Chai &amp; Parle
+              </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Warm Biscuit / Chai Kettle Motif</p>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-outline/20">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-md text-headline-md font-black text-on-surface">₹449</span>
+<span class="font-label-badge text-label-badge text-on-surface-variant uppercase font-bold">MRP</span>
+</div>
+<button class="quick-add-btn fluid-btn h-10 px-5 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md font-bold border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] hover:bg-primary flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+<span>ADD</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- Interactive Custom Sock Pack Builder Promo Banner -->
+<section class="w-full py-10 md:py-16 bg-surface-container-high px-4 sm:px-gutter md:px-gutter-desktop border-y-4 border-on-surface">
+<div class="max-w-7xl mx-auto rounded-3xl bg-ink-black text-sticker-white p-8 sm:p-12 relative overflow-hidden border-3 border-on-surface shadow-[8px_8px_0_#0f0d5a]">
+<!-- Glow ambient shapes -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary-container/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-20 -top-20 w-80 h-80 bg-secondary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<!-- Text & Pack perks -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="inline-flex items-center gap-2 self-start bg-secondary-container text-ink-black px-3.5 py-1.5 rounded-full font-label-badge text-label-badge uppercase font-black border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+            SAVE UP TO ₹794 TODAY
+          </div>
+<h2 class="font-headline-xl text-headline-xl uppercase font-black tracking-tight text-sticker-white leading-tight">
+            BUILD YOUR CUSTOM <br/>
+<span class="text-secondary-container">3, 5 OR 7 PACK!</span>
+</h2>
+<p class="font-body-lg text-body-lg text-surface-container-low max-w-xl">
+            Mix and match your wildest kicks. No rules, no boring singles. Choose your lengths, choose your chaos, and unlock automatic bundle pricing at checkout.
+          </p>
+<!-- Pack tiered discount badges -->
+<div class="grid grid-cols-3 gap-3 pt-2 max-w-md">
+<div class="bg-surface-variant/20 rounded-2xl p-3 flex flex-col items-center text-center border-2 border-outline/30 brutal-card-hover">
+<span class="font-headline-md text-headline-md font-black text-secondary-container">3 PACK</span>
+<span class="font-label-badge text-label-badge uppercase font-bold text-inverse-on-surface">SAVE ₹249</span>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-2xl p-3 flex flex-col items-center text-center border-2 border-sticker-white shadow-md -translate-y-1 brutal-card-hover">
+<span class="font-headline-md text-headline-md font-black">5 PACK</span>
+<span class="font-label-badge text-label-badge uppercase font-black">SAVE ₹499</span>
+</div>
+<div class="bg-surface-variant/20 rounded-2xl p-3 flex flex-col items-center text-center border-2 border-outline/30 brutal-card-hover">
+<span class="font-headline-md text-headline-md font-black text-secondary-container">7 PACK</span>
+<span class="font-label-badge text-label-badge uppercase font-bold text-inverse-on-surface">SAVE ₹794</span>
+</div>
+</div>
+</div>
+<!-- Action / CTA block -->
+<div class="lg:col-span-5 flex flex-col items-center lg:items-end justify-center gap-4">
+<div class="w-full bg-sticker-white text-ink-black p-6 rounded-2xl border-3 border-on-surface shadow-[6px_6px_0_#fecf00] flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md font-black uppercase">Bundle Super Saver</span>
+<span class="bg-primary-container text-on-primary-container font-label-badge text-label-badge px-2.5 py-1 rounded-md font-extrabold uppercase border border-on-surface">Most Loved</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Pick 5 pairs of your choice. Comes housed in our collectible neon tin sock box.
+            </p>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-body-md text-body-md font-semibold text-on-surface-variant">Pack starting at</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg font-black text-primary-container">₹1,499</span>
+<span class="font-body-md text-body-md line-through text-outline">₹2,295</span>
+</div>
+</div>
+<a class="fluid-btn w-full h-12 rounded-full bg-secondary-container text-ink-black font-title-md text-body-md font-black uppercase border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-center justify-center gap-2" data-path="shop" href="#">
+<span>UNLOCK BUNDLE BUILDER</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Socksy Guarantee & Social Proof Strip -->
+<section class="w-full bg-canvas-cream py-8 px-4 sm:px-gutter md:px-gutter-desktop border-b-4 border-on-surface">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-sticker-white text-primary-container border-2 border-on-surface flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] shrink-0">
+<span class="material-symbols-outlined text-2xl">verified</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-md font-black uppercase text-ink-black">100% Combed Cotton</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Ultra-soft, zero pilling</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-sticker-white text-secondary-container border-2 border-on-surface flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] shrink-0">
+<span class="material-symbols-outlined text-2xl">sentiment_very_satisfied</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-md font-black uppercase text-ink-black">Anti-Slip Silicon</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sox stay up all day long</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-sticker-white text-primary-container border-2 border-on-surface flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] shrink-0">
+<span class="material-symbols-outlined text-2xl">local_shipping</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-md font-black uppercase text-ink-black">Fast 48h Dispatch</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Direct from Delhi warehouse</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl bg-sticker-white text-tertiary-container border-2 border-on-surface flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] shrink-0">
+<span class="material-symbols-outlined text-2xl">sync_alt</span>
+</div>
+<div>
+<h4 class="font-title-md text-body-md font-black uppercase text-ink-black">Hassle-Free Swap</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">7-day replacement guarantee</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline Interactive Script for Filters, Sorter, Wishlist, and Add to Cart -->
+<script>
+  (function() {
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const moodPills = document.querySelectorAll('.mood-pill');
+    const cards = document.querySelectorAll('.product-card');
+    const sortSelect = document.getElementById('sort-select');
+    const priceSlider = document.getElementById('price-slider');
+    const priceLabel = document.getElementById('price-label');
+    const activeCount = document.getElementById('active-count');
+    const grid = document.getElementById('product-grid');
+
+    let currentCategory = 'all';
+    let currentMood = 'all';
+    let maxPrice = 600;
+
+    function applyFilters() {
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        const cardMood = card.getAttribute('data-mood') || '';
+        const cardPrice = parseInt(card.getAttribute('data-price'), 10);
+
+        const matchCat = (currentCategory === 'all' || currentCategory === 'bundle') ? true : cardCat === currentCategory;
+        const matchMood = (currentMood === 'all') ? true : cardMood.includes(currentMood);
+        const matchPrice = cardPrice <= maxPrice;
+
+        if (matchCat && matchMood && matchPrice) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (activeCount) {
+        activeCount.textContent = visibleCount + ' STYLES SHOWING';
+      }
+    }
+
+    // Category Filter Clicks
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => {
+          b.classList.remove('bg-on-surface', 'text-sticker-white');
+          b.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+        btn.classList.add('bg-on-surface', 'text-sticker-white');
+
+        currentCategory = btn.getAttribute('data-category');
+        applyFilters();
+      });
+    });
+
+    // Mood Filter Clicks
+    moodPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        moodPills.forEach(p => {
+          p.classList.remove('bg-secondary-container', 'text-ink-black', 'font-black');
+          p.classList.add('bg-surface-container', 'text-on-surface');
+        });
+        pill.classList.remove('bg-surface-container', 'text-on-surface');
+        pill.classList.add('bg-secondary-container', 'text-ink-black', 'font-black');
+
+        currentMood = pill.getAttribute('data-mood');
+        applyFilters();
+      });
+    });
+
+    // Price Slider Change
+    if (priceSlider && priceLabel) {
+      priceSlider.addEventListener('input', (e) => {
+        maxPrice = parseInt(e.target.value, 10);
+        priceLabel.textContent = '₹' + maxPrice;
+        applyFilters();
+      });
+    }
+
+    // Sort Dropdown
+    if (sortSelect && grid) {
+      sortSelect.addEventListener('change', () => {
+        const val = sortSelect.value;
+        const cardArray = Array.from(cards);
+
+        cardArray.sort((a, b) => {
+          const priceA = parseInt(a.getAttribute('data-price'), 10);
+          const priceB = parseInt(b.getAttribute('data-price'), 10);
+          const popA = parseInt(a.getAttribute('data-popular'), 10);
+          const popB = parseInt(b.getAttribute('data-popular'), 10);
+
+          if (val === 'low-high') return priceA - priceB;
+          if (val === 'high-low') return priceB - priceA;
+          if (val === 'newest') return popA - popB;
+          return popB - popA; // 'popular'
+        });
+
+        cardArray.forEach(card => grid.appendChild(card));
+      });
+    }
+
+    // Wishlist Toggle
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) {
+          const isFilled = icon.style.fontVariationSettings && icon.style.fontVariationSettings.includes("'FILL' 1");
+          if (isFilled) {
+            icon.style.fontVariationSettings = "'FILL' 0";
+            btn.classList.remove('text-alert-badge');
+          } else {
+            icon.style.fontVariationSettings = "'FILL' 1";
+            btn.classList.add('text-alert-badge');
+          }
+        }
+      });
+    });
+
+    // Quick Add Button Micro-Feedback
+    document.querySelectorAll('.quick-add-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const originalText = btn.innerHTML;
+        btn.classList.remove('bg-primary-container', 'text-on-primary-container');
+        btn.classList.add('bg-secondary-container', 'text-ink-black');
+        btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">done</span> ADDED!';
+        setTimeout(() => {
+          btn.classList.remove('bg-secondary-container', 'text-ink-black');
+          btn.classList.add('bg-primary-container', 'text-on-primary-container');
+          btn.innerHTML = originalText;
+        }, 1200);
+      });
+    });
+
+  })();
+</script></main><footer class="w-full bg-ink-black text-sticker-white border-t-4 border-on-surface pt-12 pb-8 mt-16 relative overflow-hidden"><div class="max-w-7xl mx-auto px-4 md:px-gutter-desktop"><div class="flex flex-col lg:flex-row lg:items-center justify-between pb-10 border-b-2 border-outline/30 gap-6"><div class="flex flex-col gap-2"><div class="inline-block -rotate-1 self-start bg-secondary-container text-ink-black border-2 border-sticker-white px-3 py-1 font-label-badge text-label-badge rounded-md uppercase font-black">100% Anti-Boring Guarantee</div><h2 class="font-display-hero text-headline-xl uppercase tracking-tight text-canvas-cream">KEEP YOUR SOX FUN.</h2></div><div class="w-full lg:w-auto"><form class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2" onsubmit="event.preventDefault();"><div class="relative flex-1 sm:w-80"><input class="w-full h-12 px-4 rounded-full bg-sticker-white text-ink-black border-2 border-ink-black placeholder:text-on-surface-variant/60 font-body-md text-body-md focus:outline-none shadow-[2px_2px_0_#0f0d5a]" placeholder="GET SOCKSY IN YOUR INBOX" type="email"/></div><button class="fluid-btn h-12 px-6 rounded-full bg-primary-container text-on-primary-container font-title-md text-body-md border-2 border-sticker-white uppercase font-bold shadow-[2px_2px_0_#0A0A28] hover:bg-primary flex items-center justify-center gap-1.5" type="submit">JOIN THE CREW <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button></form></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-b-2 border-outline/30"><div class="flex flex-col gap-3"><span class="font-headline-md text-title-md text-secondary-container uppercase tracking-wide">Socks Collection</span><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="shop" href="#">All Socks</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="new-drops" href="#">New Drops</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="ankle" href="#">Ankle Length</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="crew" href="#">Crew &amp; Ribbed</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="no-show" href="#">No-show Loafers</a></div><div class="flex flex-col gap-3"><span class="font-headline-md text-title-md text-secondary-container uppercase tracking-wide">The Universe</span><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="about" href="#">About Mojadaar</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="contact" href="#">Contact HQ</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="faq" href="#">FAQ &amp; Help</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="shipping" href="#">Shipping Info</a></div><div class="flex flex-col gap-3"><span class="font-headline-md text-title-md text-secondary-container uppercase tracking-wide">Peace of Mind</span><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="returns" href="#">Easy Returns</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="privacy" href="#">Privacy Policy</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="terms" href="#">Terms of Service</a><a class="text-body-md font-body-md text-inverse-on-surface/80 hover:text-secondary-container transition-colors" data-path="track-order" href="#">Track Your Order</a></div><div class="flex flex-col gap-4"><span class="font-headline-md text-title-md text-secondary-container uppercase tracking-wide">Social Feet</span><div class="flex items-center gap-3"><a class="w-10 h-10 rounded-xl bg-canvas-cream text-ink-black border-2 border-sticker-white flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] hover:translate-y-[-2px] transition-transform" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a><a class="w-10 h-10 rounded-xl bg-canvas-cream text-ink-black border-2 border-sticker-white flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] hover:translate-y-[-2px] transition-transform" href="#"><span class="material-symbols-outlined text-[20px]">chat_bubble</span></a><a class="w-10 h-10 rounded-xl bg-canvas-cream text-ink-black border-2 border-sticker-white flex items-center justify-center shadow-[2px_2px_0_#0f0d5a] hover:translate-y-[-2px] transition-transform" href="#"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a></div><div class="p-3 bg-inverse-surface rounded-xl border border-outline/30 flex items-center gap-2"><span class="material-symbols-outlined text-secondary-container">local_shipping</span><span class="font-body-md text-body-md text-sticker-white font-bold">Express Delivery Across India</span></div></div></div><div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 font-label-ticker text-label-ticker text-outline-variant"><div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-pulse"></span><span>© 2026 MOJADAAR · LOOKING TOO SOCKSY · MADE IN INDIA</span></div><div class="flex items-center gap-4 text-xs font-semibold"><span>DELHI / MUMBAI / BENGALURU</span><span>✦</span><span>DELIVERING WORLDWIDE FUN</span></div></div></div></footer></body></html>

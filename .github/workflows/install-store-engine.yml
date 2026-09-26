@@ -1,0 +1,40 @@
+name: Install Mojedaar store engine
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject ecommerce engine into all pages
+        shell: bash
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          script='<script src="mojedaar-store.js"></script>'
+          for p in Path('.').glob('*.html'):
+              s=p.read_text(encoding='utf-8')
+              if script not in s:
+                  if '</body>' in s:
+                      s=s.replace('</body>',script+'\n</body>',1)
+                  else:
+                      s+=script
+                  p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit injected scripts
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Install Mojedaar ecommerce engine on all pages'
+          git push

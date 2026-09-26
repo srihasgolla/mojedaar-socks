@@ -422,4 +422,34 @@
 
 
 <script id="mojedaar-navigation">document.addEventListener("click",function(e){const el=e.target.closest("[data-path]");if(!el)return;const routes={home:"index.html",shop:"Shop.html","new-drops":"Shop.html",ankle:"Shop.html",crew:"Shop.html","no-show":"Shop.html",cart:"Cart.html",checkout:"Checkout.html",product:"Mirchi Masala Crew Sox.html"};const p=el.getAttribute("data-path");if(routes[p]){e.preventDefault();location.href=routes[p]}});document.addEventListener("DOMContentLoaded",function(){const s=document.querySelector("button[aria-label=\"Search\"]");if(s)s.addEventListener("click",function(){const q=prompt("What are you looking for?");if(q&&q.trim())location.href="Shop.html?search="+encodeURIComponent(q.trim())});const m=document.querySelector("button[aria-label=\"Fun Mood\"]");if(m)m.addEventListener("click",function(){location.href="Shop.html"})});</script>
+<script id="mojedaar-cart-fix">
+(function(){
+  const KEY='mojedaarCart';
+  const get=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return[]}};
+  const set=c=>{localStorage.setItem(KEY,JSON.stringify(c));renderBadge()};
+  const count=()=>get().reduce((n,i)=>n+(Number(i.qty)||0),0);
+  function renderBadge(){document.querySelectorAll('a[data-path="cart"] span.absolute').forEach(b=>{b.textContent=count();b.style.display=count()?'flex':'none'})}
+  function add(card,btn){
+    const c=get(), name=card.querySelector('h3 a,h3,h2')?.textContent.trim()||'Mojedaar Sox';
+    const price=Number(card.dataset.price||0), id=name+'|'+price;
+    const old=c.find(x=>x.id===id); if(old) old.qty=(Number(old.qty)||0)+1; else c.push({id,name,price,qty:1});
+    set(c); btn.innerHTML='<span class="material-symbols-outlined text-[18px]">done</span> ADDED!';
+    setTimeout(()=>{btn.innerHTML='<span class="material-symbols-outlined text-[18px]">add_shopping_cart</span> ADD'},1100);
+  }
+  function renderCart(){
+    if(!/Cart\.html$/i.test(location.pathname)) return;
+    const main=document.querySelector('main'); if(!main)return;
+    const c=get(), subtotal=c.reduce((s,i)=>s+i.price*i.qty,0), shipping=subtotal>=999||subtotal===0?0:79, total=subtotal+shipping;
+    main.innerHTML=`<section style="max-width:1180px;margin:0 auto;padding:42px 20px 80px;font-family:Rubik,Fredoka,sans-serif;color:#0f0d5a"><div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap"><div><div style="display:inline-block;background:#ffde00;border:3px solid #0f0d5a;border-radius:999px;padding:8px 16px;font-weight:900">YOUR SOX BAG 🛒</div><h1 style="font-family:Archivo Black;margin:14px 0 4px;font-size:clamp(36px,6vw,64px);line-height:1">${c.length?'SOCKS READY TO ROLL.':'YOUR BAG IS EMPTY.'}</h1><p style="font-size:18px;font-weight:600">${c.length?'Add more chaos or head to checkout.':'Go pick some ridiculous socks first.'}</p></div></div><div style="display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.7fr);gap:24px;margin-top:30px"><div style="display:flex;flex-direction:column;gap:14px">${c.length?c.map((i,n)=>`<article style="background:#fff;border:3px solid #0f0d5a;border-radius:22px;padding:18px;box-shadow:5px 5px 0 #0f0d5a;display:flex;align-items:center;gap:18px;justify-content:space-between"><div style="min-width:0"><h2 style="margin:0 0 5px;font-family:Archivo Black;font-size:22px;text-transform:uppercase">${i.name}</h2><div style="font-weight:800">₹${i.price}</div></div><div style="display:flex;align-items:center;gap:8px"><button data-cart-dec="${n}" style="width:38px;height:38px;border:2px solid #0f0d5a;border-radius:50%;background:#fff;font-size:22px;font-weight:900">−</button><b style="min-width:24px;text-align:center">${i.qty}</b><button data-cart-inc="${n}" style="width:38px;height:38px;border:2px solid #0f0d5a;border-radius:50%;background:#ffd928;font-size:22px;font-weight:900">+</button><button data-cart-remove="${n}" style="margin-left:8px;border:0;background:#e4006c;color:#fff;border:2px solid #0f0d5a;border-radius:999px;padding:9px 13px;font-weight:900">REMOVE</button></div></article>`).join(''):`<div style="background:#fff;border:3px solid #0f0d5a;border-radius:22px;padding:40px;text-align:center;box-shadow:5px 5px 0 #0f0d5a"><div style="font-size:54px">🧦</div><h2 style="font-family:Archivo Black;font-size:30px">NO SOX, NO GLORY.</h2><a href="Shop.html" style="display:inline-block;background:#e4006c;color:#fff;border:3px solid #0f0d5a;border-radius:999px;padding:13px 24px;font-weight:900;text-decoration:none">SHOP THE SOX</a></div>`}</div><aside style="background:#fff7d6;border:3px solid #0f0d5a;border-radius:22px;padding:24px;box-shadow:5px 5px 0 #0f0d5a;height:max-content"><h2 style="font-family:Archivo Black;margin-top:0">ORDER TOTAL</h2><div style="display:flex;justify-content:space-between;margin:14px 0;font-weight:700"><span>Subtotal</span><span>₹${subtotal}</span></div><div style="display:flex;justify-content:space-between;margin:14px 0;font-weight:700"><span>Shipping</span><span>${shipping?'₹'+shipping:'FREE'}</span></div><hr style="border:0;border-top:2px solid #0f0d5a"><div style="display:flex;justify-content:space-between;font-size:24px;font-weight:900;margin:18px 0"><span>TOTAL</span><span>₹${total}</span></div><a href="${c.length?'Checkout.html':'Shop.html'}" style="display:block;text-align:center;background:#e4006c;color:#fff;border:3px solid #0f0d5a;border-radius:999px;padding:15px;font-weight:900;text-decoration:none">${c.length?'CHECKOUT →':'GO SHOPPING'}</a></aside></div></section>`;
+    main.querySelectorAll('[data-cart-inc]').forEach(b=>b.onclick=()=>{const a=get();a[+b.dataset.cartInc].qty++;set(a);renderCart()});
+    main.querySelectorAll('[data-cart-dec]').forEach(b=>b.onclick=()=>{const a=get(),i=a[+b.dataset.cartDec];i.qty--;if(i.qty<=0)a.splice(+b.dataset.cartDec,1);set(a);renderCart()});
+    main.querySelectorAll('[data-cart-remove]').forEach(b=>b.onclick=()=>{const a=get();a.splice(+b.dataset.cartRemove,1);set(a);renderCart()});
+  }
+  document.addEventListener('click',function(e){
+    const add=e.target.closest('.quick-add-btn');
+    if(add){e.preventDefault();e.stopPropagation();const card=add.closest('.product-card');if(card)add(card,add)}
+  },true);
+  document.addEventListener('DOMContentLoaded',function(){renderBadge();renderCart()});
+})();
+</script>
 </body></html>

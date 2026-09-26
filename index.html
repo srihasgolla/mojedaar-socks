@@ -1,363 +1,648 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="web_standard" name="shell-type"/>
-  <title>MOJADAAR — Looking Too Socksy</title>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Fredoka:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"/>
-  
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&amp;family=Fredoka:wght@400..700&amp;family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>
+@layer base {
+  html, body { margin: 0; padding: 0; }
+  body { overscroll-behavior: none; }
+  main > :first-child { margin-top: 0 !important; }
+  main > :last-child { margin-bottom: 0 !important; }
+}
+::-webkit-scrollbar { display: none; }
 
-  <style>
-  @layer base {
-    html, body { margin: 0; padding: 0; }
-    body { overscroll-behavior: none; }
-    main > :first-child { margin-top: 0 !important; }
-    main > :last-child { margin-bottom: 0 !important; }
-  }
-  ::-webkit-scrollbar { display: none; }
+/* Infinite Continuous Marquee Keyframes */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
 
-  /* Infinite Continuous Marquee Keyframes */
-  @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
-  }
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 14s linear infinite;
+}
 
-  .animate-marquee-infinite {
-    display: flex;
-    width: max-content;
-    animation: marquee 22s linear infinite;
-  }
-  .animate-marquee-infinite:hover {
-    animation-play-state: paused;
-  }
-  .animate-marquee-fast {
-    display: flex;
-    width: max-content;
-    animation: marquee 14s linear infinite;
-  }
+/* Playful Float & Wobble Keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(3deg); }
+}
 
-  /* Playful Float & Wobble Keyframes */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(3deg); }
-  }
+@keyframes sox-wobble {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
 
-  @keyframes sox-wobble {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
-  }
+.animate-sox-float {
+  animation: float 4s ease-in-out infinite;
+}
 
-  .animate-sox-float {
-    animation: float 4s ease-in-out infinite;
-  }
+.animate-sox-wobble {
+  animation: sox-wobble 3s ease-in-out infinite;
+}
 
-  .animate-sox-wobble {
-    animation: sox-wobble 3s ease-in-out infinite;
-  }
+/* Neo-Brutalist Spring Card Hover Micro-Interactions */
+.brutal-card-hover {
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
+}
+.brutal-card-hover:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 8px 8px 0px #0f0d5a !important;
+}
 
-  /* Neo-Brutalist Card Hover */
-  .brutal-card-hover {
-    transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease;
-  }
-  .brutal-card-hover:hover {
-    transform: translateY(-6px) rotate(-1deg);
-    box-shadow: 8px 8px 0px #0f0d5a !important;
-  }
-
-  .brutal-mood-hover {
-    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
-  }
-  .brutal-mood-hover:hover {
-    transform: translateY(-5px) scale(1.02);
-  }
-
-  /* Studio Embed */
-  .sox-embed-frame {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    min-height: 500px;
-    background: #fff7e8;
-  }
-  .sox-embed-frame iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-  }
-  </style>
-
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-          "on-surface": "#0f0d5a",
-          "surface": "#fcf8ff",
-          "tertiary-container": "#cb4900",
-          "on-primary": "#ffffff",
-          "tertiary": "#a23900",
-          "on-secondary-fixed": "#231b00",
-          "sticker-white": "#FFFFFF",
-          "surface-container-low": "#f5f2ff",
-          "surface-variant": "#e1e0ff",
-          "outline": "#906e75",
-          "secondary-container": "#fecf00",
-          "primary-container": "#e4006c",
-          "surface-container": "#eeecff",
-          "surface-container-high": "#e8e6ff",
-          "alert-badge": "#FF0055",
-          "background": "#fcf8ff",
-          "secondary": "#725c00",
-          "on-background": "#0f0d5a",
-          "on-primary-container": "#fffbff",
-          "primary": "#b60055",
-          "canvas-cream": "#FFF7D6",
-          "on-surface-variant": "#5c3f45"
-        },
-        "fontFamily": {
-          "display-hero": ["Archivo Black", "sans-serif"],
-          "body-lg": ["Rubik", "Fredoka", "sans-serif"],
-          "headline-lg": ["Archivo Black", "sans-serif"],
-          "body-md": ["Rubik", "Fredoka", "sans-serif"],
-          "headline-xl": ["Archivo Black", "sans-serif"],
-          "title-md": ["Rubik", "Fredoka", "sans-serif"],
-          "label-badge": ["Fredoka", "sans-serif"],
-          "label-ticker": ["Archivo Black", "sans-serif"]
-        }
-      }
-    }
-  };
-  </script>
-</head>
-
-<body class="bg-background font-body-md text-on-surface">
-
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 z-50">
-    <div class="bg-secondary-container text-on-secondary-fixed py-2 overflow-hidden flex whitespace-nowrap border-b-2 border-on-surface">
-      <div class="animate-marquee-infinite uppercase font-label-ticker text-[13px] tracking-wider">
-        <div class="flex items-center gap-6 pr-6">
-          <span>🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span>
-          <span>🚨 YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="h-20 bg-sticker-white border-b-2 border-on-surface shadow-[0_4px_0_#0f0d5a]">
-      <div class="max-w-7xl mx-auto px-4 lg:px-8 h-full flex items-center justify-between gap-4">
-        <!-- Logo -->
-        <a class="flex items-center gap-2" href="index.html">
-          <span class="font-display-hero text-2xl uppercase tracking-tight text-on-surface">MOJADAAR</span>
+.brutal-mood-hover {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+.brutal-mood-hover:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#0f0d5a", "surface": "#fcf8ff", "on-tertiary-fixed": "#370e00", "tertiary-container": "#cb4900", "on-primary": "#ffffff", "tertiary": "#a23900", "on-secondary-fixed": "#231b00", "on-error-container": "#93000a", "on-error": "#ffffff", "secondary-fixed": "#ffe082", "error": "#ba1a1a", "on-secondary-container": "#6f5900", "sticker-white": "#FFFFFF", "surface-container-low": "#f5f2ff", "inverse-on-surface": "#f2efff", "surface-variant": "#e1e0ff", "on-tertiary-container": "#fffbff", "on-secondary-fixed-variant": "#564500", "outline": "#906e75", "ink-black": "#0A0A28", "secondary-fixed-dim": "#eec200", "tertiary-fixed": "#ffdbce", "secondary-container": "#fecf00", "on-primary-fixed": "#3f0019", "primary-container": "#e4006c", "inverse-primary": "#ffb1c3", "surface-container": "#eeecff", "on-primary-fixed-variant": "#8f0041", "surface-container-high": "#e8e6ff", "inverse-surface": "#26276e", "alert-badge": "#FF0055", "background": "#fcf8ff", "surface-bright": "#fcf8ff", "surface-container-lowest": "#ffffff", "surface-dim": "#d7d6ff", "primary-fixed-dim": "#ffb1c3", "on-secondary": "#ffffff", "secondary": "#725c00", "surface-tint": "#bb0058", "on-tertiary-fixed-variant": "#7f2b00", "error-container": "#ffdad6", "on-background": "#0f0d5a", "tertiary-fixed-dim": "#ffb599", "outline-variant": "#e5bcc4", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9e0", "on-tertiary": "#ffffff", "primary": "#b60055", "surface-container-highest": "#e1e0ff", "canvas-cream": "#FFF7D6", "on-surface-variant": "#5c3f45" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "4rem", "gutter-desktop": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-desktop": "3rem", "gutter": "1.25rem", "space-xl": "2.5rem", "margin": "1.25rem", "space-sm": "0.5rem" }, "fontFamily": { "display-hero": [ "Archivo Black", "Archivo Narrow", "Rubik", "sans-serif" ], "body-lg": [ "Rubik", "Fredoka", "sans-serif" ], "headline-lg": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "display-hero-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "body-md": [ "Rubik", "Fredoka", "sans-serif" ], "headline-xl-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-xl": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "title-md": [ "Rubik", "Fredoka", "sans-serif" ], "label-badge": [ "Fredoka", "Rubik", "sans-serif" ], "label-ticker": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-md": [ "Archivo Black", "Rubik", "sans-serif" ] }, "fontSize": { "display-hero": [ "76px", { "lineHeight": "76px", "letterSpacing": "-0.03em", "fontWeight": "900" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "500" } ], "headline-lg": [ "32px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "800" } ], "display-hero-mobile": [ "44px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "900" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-xl-mobile": [ "32px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "800" } ], "headline-xl": [ "48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "title-md": [ "18px", { "lineHeight": "24px", "fontWeight": "700" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "800" } ], "label-ticker": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "800" } ], "headline-md": [ "22px", { "lineHeight": "28px", "fontWeight": "700" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface"><header class="sticky top-0 left-0 right-0 z-50 bg-sticker-white"><div class="bg-secondary-container text-on-secondary-fixed py-2 overflow-hidden flex whitespace-nowrap border-b-2 border-on-surface"><div class="animate-marquee-infinite uppercase font-label-ticker text-label-ticker tracking-wider"><div class="flex items-center gap-6 pr-6"><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span></div><div aria-hidden="true" class="flex items-center gap-6 pr-6"><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span><span class="flex items-center gap-2"><span class="">🚨</span> YOUR FEET CALLED. THEY WANT BETTER SOCKS ✦ FREE SHIPPING ABOVE ₹999 ✦ MADE IN INDIA ✦ LOOKING TOO SOCKSY ✦</span></div></div></div><div class="h-20 bg-sticker-white border-b-2 border-on-surface shadow-[0_4px_0_#0f0d5a]"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop h-full flex items-center justify-between gap-gutter"><a class="flex items-center gap-space-sm group" href="#"><img alt="Mojadaar - looking too socksy 3D Logo" class="h-14 w-auto object-contain transition-transform group-hover:scale-105 filter drop-shadow-[2px_2px_0px_#0f0d5a]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK5_gAcjlOAgmVcBJN7a9tXuFt_RQhzrwfT5W7u6FrjBFUjEwdA8URDEUnOQG0omr9hLU2_AIGZUnYEAIpVKYNStQZb1q54Nt6cNDwC8OXlZ5b2dM1MxmV0qcYSYdY-OUNwHrsxs_D0czrk_6cZWqmnpEKEcQD4N9tp74GFPGf6WRAZnqp5_XDx-m24xdgXuGerDo6lwnu4zQIDeasn5A5H7zba7lWVv7PFpCM0Eg895-sSzGSNugliH8k8Zswqm0AeZQ"></a><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-primary text-on-primary font-bold shadow-[2px_2px_0px_#0f0d5a]"><a aria-current="page" class="px-3.5 py-1.5 rounded-full uppercase transition-all bg-primary text-on-primary font-bold shadow-[2px_2px_0px_#0f0d5a] hover:translate-y-[-1px]" data-path="shop" href="#">Shop</a><a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md text-body-md uppercase transition-colors hover:text-on-surface hover:bg-secondary-fixed/50" data-path="new-drops" href="#">New Drops</a><a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md text-body-md uppercase transition-colors hover:text-on-surface hover:bg-secondary-fixed/50" data-path="ankle" href="#">Ankle</a><a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md text-body-md uppercase transition-colors hover:text-on-surface hover:bg-secondary-fixed/50" data-path="crew" href="#">Crew</a><a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md text-body-md uppercase transition-colors hover:text-on-surface hover:bg-secondary-fixed/50" data-path="no-show" href="#">No-show</a><a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md text-body-md uppercase transition-colors hover:text-on-surface hover:bg-secondary-fixed/50" data-path="about" href="#">About</a></nav><div class="flex items-center gap-space-sm"><button aria-label="Search" class="w-10 h-10 rounded-full border-2 border-on-surface bg-canvas-cream flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"><span class="material-symbols-outlined text-[20px]">search</span></button><a aria-label="User Account" class="w-10 h-10 rounded-full border-2 border-on-surface bg-surface-container-high flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform" data-path="account" href="#"><span class="material-symbols-outlined text-[20px]">account_circle</span></a><button aria-label="Shopping Cart" class="relative w-10 h-10 rounded-full border-2 border-on-surface bg-secondary-container flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="absolute -top-1 -right-1 bg-alert-badge text-sticker-white font-label-badge text-label-badge w-5 h-5 rounded-full flex items-center justify-center border border-on-surface">3</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center border border-on-surface ml-1"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full bg-background"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative w-full bg-canvas-cream py-space-2xl px-margin lg:px-margin-desktop overflow-hidden border-b-4 border-on-surface">
+<!-- Playful Floating Decorative Stickers with Wobble & Float Animations -->
+<div class="absolute top-8 left-6 md:left-14 rotate-[-12deg] hidden sm:flex flex-col items-center p-2 bg-secondary-container rounded-2xl border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] z-10 animate-sox-wobble hover:scale-110 transition-transform cursor-pointer">
+<div class="w-16 h-16 md:w-20 md:h-20 rounded-xl overflow-hidden bg-primary/10">
+<img alt="Sock teaser sticker" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d">
+</div>
+<span class="font-label-badge text-label-badge uppercase text-on-surface mt-1 font-black">100% MOJ!</span>
+</div>
+<div class="absolute top-12 right-6 md:right-16 rotate-[14deg] hidden sm:flex items-center gap-2 px-4 py-2 bg-primary rounded-full border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] text-on-primary z-10 animate-sox-float hover:scale-110 transition-transform cursor-pointer">
+<span class="text-xl">🌶️</span>
+<span class="font-label-badge text-label-badge uppercase tracking-wider font-extrabold">Mirchi Approved</span>
+</div>
+<div class="max-w-5xl mx-auto flex flex-col items-center text-center relative z-20">
+<!-- Tag badge -->
+<div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-sticker-white border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] mb-space-md hover:scale-105 transition-transform">
+<span class="text-base animate-bounce">🧦</span>
+<span class="font-label-ticker text-label-ticker uppercase tracking-wider text-primary font-bold">India's funkiest sock universe</span>
+</div>
+<!-- Main punchy title -->
+<h1 class="font-display-hero text-display-hero-mobile lg:text-display-hero uppercase text-on-surface tracking-tight leading-none mb-space-md">
+        BORING SOCKS <br>
+<span class="text-primary inline-block transform -rotate-1 underline decoration-secondary-container decoration-wavy">ARE</span>
+<span class="text-tertiary-container">CANCELLED.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-space-xl">
+        Loud patterns, ridiculous comfort, zero chill. Designed in India for feet with a personality problem.
+      </p>
+<!-- CTA Buttons -->
+<div class="flex flex-wrap items-center justify-center gap-space-md">
+<a class="px-8 py-3.5 rounded-full bg-primary text-on-primary font-title-md text-title-md uppercase border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_#0f0d5a] active:translate-x-1 active:translate-y-1 transition-all" href="#shop">
+          Shop the sox
         </a>
-        
-        <!-- Nav Links -->
-        <nav class="hidden lg:flex items-center gap-2">
-          <a class="px-3.5 py-1.5 rounded-full uppercase bg-primary text-on-primary font-bold shadow-[2px_2px_0px_#0f0d5a]" href="index.html">Home</a>
-          <a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md uppercase hover:bg-secondary-container/50" href="#shop">Shop</a>
-          <a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md uppercase hover:bg-secondary-container/50" href="#studio">Custom Studio</a>
-          <a class="px-3.5 py-1.5 rounded-full text-on-surface-variant font-title-md uppercase hover:bg-secondary-container/50" href="Mirchi Masala Crew Sox.html">Featured Drop</a>
-        </nav>
-
-        <!-- Header Actions -->
-        <div class="flex items-center gap-3">
-          <a aria-label="Shopping Cart" class="relative w-10 h-10 rounded-full border-2 border-on-surface bg-secondary-container flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 transition-transform" href="Cart.html">
-            <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
-            <span id="cart-badge" class="absolute -top-1 -right-1 bg-alert-badge text-sticker-white font-label-badge text-[11px] w-5 h-5 rounded-full flex items-center justify-center border border-on-surface font-bold">0</span>
-          </a>
-          <a class="px-4 py-2 rounded-full bg-primary text-on-primary font-title-md uppercase text-xs border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a]" href="Checkout.html">
-            Checkout
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main class="w-full pt-28 bg-background">
-    <!-- HERO SECTION -->
-    <section class="relative w-full bg-canvas-cream py-16 px-4 lg:px-12 overflow-hidden border-b-4 border-on-surface">
-      <div class="max-w-5xl mx-auto flex flex-col items-center text-center relative z-20">
-        <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-sticker-white border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] mb-4">
-          <span class="animate-bounce">🧦</span>
-          <span class="font-label-ticker uppercase text-primary font-bold">India's funkiest sock universe</span>
-        </div>
-        <h1 class="font-display-hero text-4xl lg:text-7xl uppercase text-on-surface tracking-tight leading-none mb-4">
-          BORING SOCKS <br/>
-          <span class="text-primary inline-block transform -rotate-1 underline decoration-secondary-container decoration-wavy">ARE</span>
-          <span class="text-tertiary-container">CANCELLED.</span>
-        </h1>
-        <p class="font-body-lg text-on-surface-variant max-w-xl mb-8">
-          Loud patterns, ridiculous comfort, zero chill. Designed in India for feet with a personality problem.
+<a class="px-7 py-3.5 rounded-full bg-sticker-white text-on-surface font-title-md text-title-md uppercase border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] hover:bg-secondary-fixed hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_#0f0d5a] transition-all flex items-center gap-2" href="#mood">
+          Find your soul sox <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- WHY SOX? SECTION -->
+<section class="w-full bg-surface-bright py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop items-center">
+<!-- Left Lifestyle Photo with Badge & Sticker -->
+<div class="lg:col-span-5 relative">
+<div class="relative rounded-3xl overflow-hidden border-4 border-on-surface shadow-[8px_8px_0_#0f0d5a] bg-canvas-cream group">
+<img alt="Street style wearing Mojadaar funky socks" class="w-full h-[460px] object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AEtjO1Vpotxv8GIBHFJRba1DevW9_pcADlK9WaYwXfF6G3FHvmy5P4Jzjxmr4FWCkSnNirG6ZI7CWlGdTmlpPprSWNOT4uo98XM-XrkOamgFFt4jevug4EukeRicEbAFcCT2TYixEerLmMFaRj5LBHMwmpP2dMWXR7s7TT8yMCd2cCqWYV6Yl8Ft3TFd3VLWIGskqeKlE-XAx8Zu9y_WH3mzmfyxrE_CmBaktuK6W5cmdNTUEYpJDM3rntrUa65">
+<!-- Shot in Bandra badge with animation -->
+<div class="absolute top-4 left-4 bg-secondary-container px-3.5 py-1 rounded-full border-2 border-on-surface shadow-[2px_2px_0_#0f0d5a] flex items-center gap-1.5 rotate-[-3deg] animate-sox-float cursor-default">
+<span class="font-label-badge text-label-badge uppercase text-on-surface font-black">shot in Bandra ✦</span>
+</div>
+<!-- Micro corner thumbnail sticker with wobble -->
+<div class="absolute bottom-4 right-4 w-20 h-20 rounded-2xl border-3 border-on-surface bg-sticker-white p-1 rotate-[6deg] shadow-[4px_4px_0_#0f0d5a] overflow-hidden animate-sox-wobble">
+<img alt="Mirchi socks preview" class="w-full h-full object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1">
+</div>
+</div>
+</div>
+<!-- Right Details & Value Props -->
+<div class="lg:col-span-7 flex flex-col pl-0 lg:pl-space-md">
+<div class="inline-flex items-center gap-2 mb-space-xs">
+<span class="font-display-hero text-headline-xl uppercase text-on-surface">WHY</span>
+<span class="font-display-hero text-headline-xl uppercase text-tertiary-container underline decoration-secondary-container">SOX?</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-space-lg">
+          Because your feet shouldn't have to dress boring. Mojadaar makes the loudest, comfiest, most ridiculous socks in the country — designed in India, made to be seen.
         </p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a class="px-8 py-3.5 rounded-full bg-primary text-on-primary font-title-md uppercase border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] hover:translate-x-0.5 hover:translate-y-0.5 transition-all" href="#shop">
-            Shop the sox
-          </a>
-          <a class="px-7 py-3.5 rounded-full bg-sticker-white text-on-surface font-title-md uppercase border-2 border-on-surface shadow-[4px_4px_0_#0f0d5a] hover:bg-secondary-container transition-all" href="#studio">
-            Custom Studio 🎨
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CUSTOMIZABLE LOVABLE STUDIO EMBED -->
-    <section id="studio" class="w-full bg-surface-bright border-b-4 border-on-surface">
-      <div class="p-4 text-center bg-secondary-container border-b-2 border-on-surface">
-        <h2 class="font-headline-lg uppercase text-on-surface text-xl">Design Your Own Custom Pair</h2>
-      </div>
-      <div class="sox-embed-frame">
-        <iframe
-          src="https://sockiverse-studio.lovable.app"
-          title="Sockiverse Studio"
-          loading="eager"
-          allow="clipboard-write; fullscreen"
-          referrerpolicy="strict-origin-when-cross-origin">
-        </iframe>
-      </div>
-    </section>
-
-    <!-- PRODUCT CATALOGUE GRID -->
-    <section class="w-full bg-secondary-container py-16 px-4 lg:px-12 border-b-4 border-on-surface" id="shop">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <span class="italic font-bold text-on-secondary-fixed">no pressure, but…</span>
-            <h2 class="font-headline-xl text-3xl lg:text-5xl uppercase text-on-surface tracking-tight">
-              EVERYONE'S <span class="text-primary underline decoration-sticker-white">SOCKSY</span> RIGHT NOW.
-            </h2>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Product 1: Mirchi Masala (Linked to dedicated product page) -->
-          <div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-            <div>
-              <a href="Mirchi Masala Crew Sox.html" class="block relative aspect-square rounded-2xl overflow-hidden bg-canvas-cream mb-4 border-2 border-on-surface">
-                <img alt="Mirchi Masala socks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1"/>
-                <span class="absolute top-2 left-2 bg-primary text-on-primary font-label-badge text-xs uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold">Hot</span>
-              </a>
-              <a href="Mirchi Masala Crew Sox.html">
-                <h3 class="font-title-md uppercase text-on-surface font-black hover:text-primary">Mirchi Masala Crew Sox</h3>
-              </a>
-              <p class="text-xs text-on-surface-variant">Cream / Chilli Print · Crew</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="font-title-md text-primary font-black">₹449</span>
-              </div>
+<!-- 5 Feature Pill Cards with brutalist hover -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="p-3.5 rounded-2xl bg-canvas-cream border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-start gap-3 brutal-card-hover">
+<span class="text-2xl">☁️</span>
+<div>
+<h3 class="font-title-md text-body-lg uppercase text-on-surface font-black">Softness</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Combed cotton that feels like a nap.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-sticker-white border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-start gap-3 brutal-card-hover">
+<span class="text-2xl">🧷</span>
+<div>
+<h3 class="font-title-md text-body-lg uppercase text-on-surface font-black">Fit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Stays up. Never strangles your calf.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-surface-container border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-start gap-3 brutal-card-hover">
+<span class="text-2xl">🌬️</span>
+<div>
+<h3 class="font-title-md text-body-lg uppercase text-on-surface font-black">Breathability</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Built for Indian summers, obviously.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-sticker-white border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-start gap-3 brutal-card-hover">
+<span class="text-2xl">💪</span>
+<div>
+<h3 class="font-title-md text-body-lg uppercase text-on-surface font-black">Durability</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Wash 100 times. Still loud.</p>
+</div>
+</div>
+<div class="p-3.5 rounded-2xl bg-secondary-fixed border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] flex items-start gap-3 sm:col-span-2 brutal-card-hover">
+<span class="text-2xl">🤪</span>
+<div>
+<h3 class="font-title-md text-body-lg uppercase text-on-surface font-black">Fun</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Non-negotiable. Wear what sparks genuine joy.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EVERYONE'S SOCKSY RIGHT NOW (CANARY YELLOW SECTION) -->
+<section class="w-full bg-secondary-container py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface" id="shop">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-sm">
+<div>
+<span class="italic font-body-md text-body-md text-on-secondary-fixed font-bold tracking-tight">no pressure, but…</span>
+<h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl uppercase text-on-surface tracking-tight">
+            EVERYONE'S <span class="text-primary underline decoration-sticker-white">SOCKSY</span> RIGHT NOW.
+          </h2>
+<p class="font-body-md text-body-md text-on-secondary-fixed mt-1">
+            Swipe through the pairs flying out of our warehouse in Mumbai this week.
+          </p>
+</div>
+<a class="self-start md:self-end px-5 py-2.5 rounded-full bg-sticker-white border-2 border-on-surface text-on-surface font-title-md text-body-md uppercase shadow-[3px_3px_0_#0f0d5a] hover:bg-canvas-cream hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1.5 whitespace-nowrap" href="#all-sox">
+          See all the sox <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- Product Cards Grid with Springy Hover Motion -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-gutter p-1">
+<!-- Product 1: Zigzag Zindagi -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-secondary-fixed mb-space-sm border-2 border-on-surface">
+<img alt="Zigzag Zindagi socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d">
+<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Bestseller</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Zigzag Zindagi</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.8</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Pink / Orange Zigzag · Ankle</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹399</span>
+<span class="text-xs text-outline line-through">₹549</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Product 2: Mirchi Masala -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-canvas-cream mb-space-sm border-2 border-on-surface">
+<img alt="Mirchi Masala socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1">
+<span class="absolute top-2 left-2 bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">New</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Mirchi Masala</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.9</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Cream / Chilli Print · Crew</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹449</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Product 3: Smiley Checkmate -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-surface-container mb-space-sm border-2 border-on-surface">
+<img alt="Smiley Checkmate socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU">
+<span class="absolute top-2 left-2 bg-alert-badge text-on-primary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Low Stock</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Smiley Checkmate</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.7</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Navy / Yellow Check · Ankle</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹429</span>
+<span class="text-xs text-outline line-through">₹599</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Product 4: Matchbox Mania -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-secondary-fixed mb-space-sm border-2 border-on-surface">
+<img alt="Matchbox Mania socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WgXtdLrmLehX9vJDVcu_cdiVlFJWXor5NZBZEkMGkz9r3v97bMDCJnx2zL9mXSHm7xlw0aQU-uvYgI558kQSab9PwTvCkEWsX3w3qM3-TGZTCo2fVO4V9NkbIdZ9UgHMFA3js8_M3BaFWLiCeUNDbixpLMK_q2vGimdvuPkrM9EnZad-qQMdrLvUn6OOHaiGP-0m0o0xDRg5jfLCgzqN4oSL0legb_OBtE8XplSFgO4kT53IihW30xn_w">
+<span class="absolute top-2 left-2 bg-tertiary text-on-tertiary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Limited</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Matchbox Mania</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.9</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Orange / Retro Print · Mid-calf</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹499</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Product 5: Bijli Stripes -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-canvas-cream mb-space-sm border-2 border-on-surface">
+<img alt="Bijli Stripes socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1V-qYVPmWJErPaKcaSsXDk9ATSEqBDxkDdkPIH0ioKc72D1Wy9d-rg0heTh4Ujgd7JtOqaEjixp-mJQtMref31iLXWN-nRn1QRwjNP9P5vJK-FADLVt-nVtmLGUxQ64CFXpc9YVXhwNb6IQyuNk6G00ApcM8gf9a68vD2Nt3fDAi4sZxymdJvSCIzp7XU-YdW0oKhK7n9LQ-zLWvZeayoKhKp7UWfOLngpCX_xmTyHKz3yjRes1WoVzSVOA">
+<span class="absolute top-2 left-2 bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">New</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Bijli Stripes</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.6</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Pink / Yellow Stripe · Crew</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹379</span>
+<span class="text-xs text-outline line-through">₹499</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Product 6: Swirl Trip -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-3 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-pink-100 mb-space-sm border-2 border-on-surface">
+<img alt="Swirl Trip socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1V41JA_wqEtV5dqlSA1uLLXta7h8KGf0ZDtnKPqY5k3Xve28K5l8I9ScjTRiuzllWA5QNAF0BU7sjXmN_YrfRSBFIhms_Fk6BpygUtKMrgqg_5Yvf7d480MdhQkiQXjrix06HIMSjxlfie1GNms5gfToWIZOmDHbj6TvcAvcKdfDU_5VWZS97Gzt2PVlJ9_1iXr1uB4rvyG9IBjafj9iVgQmFh-lPhrwtpr40tnq0AbRErcwBtdlf5iXXWd">
+<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Bestseller</span>
+<button aria-label="Quick save" class="absolute top-2 right-2 w-7 h-7 bg-sticker-white rounded-full border border-on-surface flex items-center justify-center hover:bg-pink-100 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-primary">favorite</span>
+</button>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black truncate">Swirl Trip</h3>
+<div class="flex items-center text-xs font-bold text-on-surface">★ 4.8</div>
+</div>
+<p class="font-body-md text-[12px] text-on-surface-variant truncate">Orange / Pink Swirl · No-show</p>
+<div class="flex items-baseline gap-2 mt-2">
+<span class="font-title-md text-title-md text-primary font-black">₹349</span>
+</div>
+</div>
+<button class="mt-3 w-full py-1.5 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- WHAT'S YOUR SOX MOOD? (DEEP BLUE NEO-BRUTAL SECTION) -->
+<section class="w-full bg-ink-black py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface text-sticker-white" id="mood">
+<div class="max-w-7xl mx-auto">
+<div class="mb-space-xl">
+<h2 class="font-display-hero text-headline-xl uppercase tracking-tight text-sticker-white">
+          WHAT'S YOUR <span class="text-secondary-container">SOX</span> MOOD?
+        </h2>
+<p class="font-body-lg text-body-lg text-surface-dim mt-1">Skip the categories. Shop the feeling.</p>
+</div>
+<!-- Mood Block Grid with high-energy interactions -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Mood 1: Colour Obsessed -->
+<a class="group h-44 rounded-2xl bg-primary border-3 border-sticker-white shadow-[4px_4px_0_#fecf00] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#fecf00]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🌈</span>
+<span class="font-headline-md text-headline-md uppercase text-on-primary leading-tight font-black">
+            Colour Obsessed
+          </span>
+</a>
+<!-- Mood 2: Weird But Wonderful -->
+<a class="group h-44 rounded-2xl bg-secondary-container border-3 border-sticker-white shadow-[4px_4px_0_#b60055] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#b60055]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🧠</span>
+<span class="font-headline-md text-headline-md uppercase text-on-secondary-fixed leading-tight font-black">
+            Weird But Wonderful
+          </span>
+</a>
+<!-- Mood 3: Foodie Feet -->
+<a class="group h-44 rounded-2xl bg-tertiary-container border-3 border-sticker-white shadow-[4px_4px_0_#ffe082] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#ffe082]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🍕</span>
+<span class="font-headline-md text-headline-md uppercase text-on-tertiary-container leading-tight font-black">
+            Foodie Feet
+          </span>
+</a>
+<!-- Mood 4: Chaos Mode -->
+<a class="group h-44 rounded-2xl bg-inverse-surface border-3 border-sticker-white shadow-[4px_4px_0_#e4006c] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#e4006c]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">😈</span>
+<span class="font-headline-md text-headline-md uppercase text-sticker-white leading-tight font-black">
+            Chaos Mode
+          </span>
+</a>
+<!-- Mood 5: Cute AF -->
+<a class="group h-44 rounded-2xl bg-secondary-fixed border-3 border-sticker-white shadow-[4px_4px_0_#0f0d5a] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#0f0d5a]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🧸</span>
+<span class="font-headline-md text-headline-md uppercase text-on-secondary-fixed leading-tight font-black">
+            Cute AF
+          </span>
+</a>
+<!-- Mood 6: Party Feet -->
+<a class="group h-44 rounded-2xl bg-primary-container border-3 border-sticker-white shadow-[4px_4px_0_#fecf00] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#fecf00]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🪩</span>
+<span class="font-headline-md text-headline-md uppercase text-on-primary leading-tight font-black">
+            Party Feet
+          </span>
+</a>
+<!-- Mood 7: Daily Grind -->
+<a class="group h-44 rounded-2xl bg-surface-container-highest border-3 border-sticker-white shadow-[4px_4px_0_#cb4900] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#cb4900]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🏃</span>
+<span class="font-headline-md text-headline-md uppercase text-on-surface leading-tight font-black">
+            Daily Grind
+          </span>
+</a>
+<!-- Mood 8: India But Make It Fun -->
+<a class="group h-44 rounded-2xl bg-tertiary border-3 border-sticker-white shadow-[4px_4px_0_#fecf00] p-4 flex flex-col justify-between brutal-mood-hover hover:shadow-[6px_6px_0_#fecf00]" href="#shop">
+<span class="text-3xl group-hover:scale-125 transition-transform duration-200">🇮🇳</span>
+<span class="font-headline-md text-headline-md uppercase text-on-tertiary leading-tight font-black">
+            India But Make It Fun
+          </span>
+</a>
+</div>
+</div>
+</section>
+<!-- WHY BUY ONE? GET THE WHOLE CREW (BUNDLE BUILDER) -->
+<section class="w-full bg-canvas-cream py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-space-xl">
+<h2 class="font-display-hero text-headline-xl uppercase text-on-surface tracking-tight leading-none">
+          WHY BUY ONE? <br>
+<span class="text-tertiary-container underline decoration-secondary-container">GET THE WHOLE CREW.</span>
+</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-xl">
+<!-- Tier 1: 3 Pairs -->
+<div class="bg-secondary-fixed border-3 border-on-surface rounded-3xl p-6 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-sticker-white border-2 border-on-surface flex items-center justify-center font-display-hero text-headline-lg text-on-surface mb-space-sm shadow-[2px_2px_0_#0f0d5a]">
+              3
             </div>
-            <div class="flex gap-2 mt-4">
-              <a href="Mirchi Masala Crew Sox.html" class="flex-1 py-2 text-center rounded-xl bg-canvas-cream text-on-surface font-title-md text-xs uppercase border-2 border-on-surface font-bold">View</a>
-              <button onclick="addToCart('Mirchi Masala Crew Sox', 449, 'https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1')" class="flex-1 py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-xs uppercase border-2 border-on-surface hover:bg-primary transition-colors">Add</button>
-            </div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-on-surface">The Starter Pack</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">3 pairs, picked by you.</p>
+<!-- Multi sock mini avatar circle previews -->
+<div class="flex items-center -space-x-3 mb-6">
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden bg-primary hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden bg-secondary-container hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden bg-surface-container hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU"></div>
+</div>
+<div class="mb-4">
+<div class="font-display-hero text-headline-xl text-on-surface leading-none">₹999</div>
+<div class="font-body-md text-xs text-on-surface-variant mt-1">₹1197 · you save <span class="font-bold text-primary">₹198</span></div>
+</div>
+</div>
+<button class="w-full py-3 rounded-full bg-sticker-white text-on-surface font-title-md text-body-md uppercase border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:bg-on-surface hover:text-sticker-white transition-all flex items-center justify-center gap-2">
+            Lock it in <span class="">→</span>
+</button>
+</div>
+<!-- Tier 2: 5 Pairs -->
+<div class="bg-primary-container text-on-primary border-3 border-on-surface rounded-3xl p-6 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between z-10 relative brutal-card-hover">
+<div class="absolute -top-3.5 right-6 bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase px-3 py-1 rounded-full border-2 border-on-surface font-black shadow-[2px_2px_0_#0f0d5a] animate-sox-wobble">
+            Most Popular
           </div>
-
-          <!-- Product 2: Zigzag Zindagi -->
-          <div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-            <div>
-              <div class="relative aspect-square rounded-2xl overflow-hidden bg-secondary-container mb-4 border-2 border-on-surface">
-                <img alt="Zigzag Zindagi socks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d"/>
-              </div>
-              <h3 class="font-title-md uppercase text-on-surface font-black">Zigzag Zindagi</h3>
-              <p class="text-xs text-on-surface-variant">Pink / Orange Zigzag · Ankle</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="font-title-md text-primary font-black">₹399</span>
-                <span class="text-xs text-outline line-through">₹549</span>
-              </div>
+<div>
+<div class="w-14 h-14 rounded-2xl bg-secondary-container border-2 border-on-surface flex items-center justify-center font-display-hero text-headline-lg text-on-secondary-fixed mb-space-sm shadow-[2px_2px_0_#0f0d5a]">
+              5
             </div>
-            <button onclick="addToCart('Zigzag Zindagi', 399, 'https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d')" class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-xs uppercase border-2 border-on-surface hover:bg-primary transition-colors">Add To Cart</button>
-          </div>
-
-          <!-- Product 3: Smiley Checkmate -->
-          <div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-            <div>
-              <div class="relative aspect-square rounded-2xl overflow-hidden bg-surface-container mb-4 border-2 border-on-surface">
-                <img alt="Smiley Checkmate socks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU"/>
-              </div>
-              <h3 class="font-title-md uppercase text-on-surface font-black">Smiley Checkmate</h3>
-              <p class="text-xs text-on-surface-variant">Navy / Yellow Check · Ankle</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="font-title-md text-primary font-black">₹429</span>
-              </div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-on-primary">The Chaos Pack</h3>
+<p class="font-body-md text-body-md text-inverse-on-surface mb-4">5 pairs, picked by you.</p>
+<div class="flex items-center -space-x-3 mb-6">
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WgXtdLrmLehX9vJDVcu_cdiVlFJWXor5NZBZEkMGkz9r3v97bMDCJnx2zL9mXSHm7xlw0aQU-uvYgI558kQSab9PwTvCkEWsX3w3qM3-TGZTCo2fVO4V9NkbIdZ9UgHMFA3js8_M3BaFWLiCeUNDbixpLMK_q2vGimdvuPkrM9EnZad-qQMdrLvUn6OOHaiGP-0m0o0xDRg5jfLCgzqN4oSL0legb_OBtE8XplSFgO4kT53IihW30xn_w"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1V-qYVPmWJErPaKcaSsXDk9ATSEqBDxkDdkPIH0ioKc72D1Wy9d-rg0heTh4Ujgd7JtOqaEjixp-mJQtMref31iLXWN-nRn1QRwjNP9P5vJK-FADLVt-nVtmLGUxQ64CFXpc9YVXhwNb6IQyuNk6G00ApcM8gf9a68vD2Nt3fDAi4sZxymdJvSCIzp7XU-YdW0oKhK7n9LQ-zLWvZeayoKhKp7UWfOLngpCX_xmTyHKz3yjRes1WoVzSVOA"></div>
+</div>
+<div class="mb-4">
+<div class="font-display-hero text-headline-xl text-on-primary leading-none">₹1549</div>
+<div class="font-body-md text-xs text-sticker-white/90 mt-1">₹1995 · you save <span class="font-black text-secondary-fixed">₹446</span></div>
+</div>
+</div>
+<button class="w-full py-3 rounded-full bg-sticker-white text-on-surface font-title-md text-body-md uppercase border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:bg-secondary-container transition-all flex items-center justify-center gap-2">
+            Lock it in <span class="">→</span>
+</button>
+</div>
+<!-- Tier 3: 7 Pairs -->
+<div class="bg-tertiary-container text-on-tertiary-container border-3 border-on-surface rounded-3xl p-6 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
+<div>
+<div class="w-14 h-14 rounded-2xl bg-canvas-cream border-2 border-on-surface flex items-center justify-center font-display-hero text-headline-lg text-on-surface mb-space-sm shadow-[2px_2px_0_#0f0d5a]">
+              7
             </div>
-            <button onclick="addToCart('Smiley Checkmate', 429, 'https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU')" class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-xs uppercase border-2 border-on-surface hover:bg-primary transition-colors">Add To Cart</button>
-          </div>
+<h3 class="font-headline-lg text-headline-lg uppercase text-on-tertiary-container">The Full Socksy</h3>
+<p class="font-body-md text-body-md text-inverse-on-surface mb-4">7 pairs, picked by you.</p>
+<div class="flex items-center -space-x-3 mb-6">
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U_V9FHwLj2ExvpdkotNyg3M07ZEu3MnJO9Oly-Hqx4AGMV0oo29KqHAfDDwcG_P9yxRZBQASycdUhBRePmDm1yk_c7LkNALbE0n-xvi6MtazlLc30t_rVL2XVHTmirtiZipiR45u-Vjh8keDCGwbmSR6cIApCt0njfazfmpw-t1qgPyxhQJKkGRifQIyErK67n6lJvW45HmmxzIUNr-J6otV_GeVkpyPiVWG0wOputbJRnlUWNJhLa-PU"></div>
+<div class="w-10 h-10 rounded-full border-2 border-on-surface overflow-hidden hover:scale-110 transition-transform"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1V41JA_wqEtV5dqlSA1uLLXta7h8KGf0ZDtnKPqY5k3Xve28K5l8I9ScjTRiuzllWA5QNAF0BU7sjXmN_YrfRSBFIhms_Fk6BpygUtKMrgqg_5Yvf7d480MdhQkiQXjrix06HIMSjxlfie1GNms5gfToWIZOmDHbj6TvcAvcKdfDU_5VWZS97Gzt2PVlJ9_1iXr1uB4rvyG9IBjafj9iVgQmFh-lPhrwtpr40tnq0AbRErcwBtdlf5iXXWd"></div>
+</div>
+<div class="mb-4">
+<div class="font-display-hero text-headline-xl text-on-tertiary-container leading-none">₹1999</div>
+<div class="font-body-md text-xs text-sticker-white/90 mt-1">₹2793 · you save <span class="font-black text-secondary-container">₹794</span></div>
+</div>
+</div>
+<button class="w-full py-3 rounded-full bg-sticker-white text-on-surface font-title-md text-body-md uppercase border-2 border-on-surface shadow-[3px_3px_0_#0f0d5a] hover:bg-secondary-fixed transition-all flex items-center justify-center gap-2">
+            Lock it in <span class="">→</span>
+</button>
+</div>
+</div>
+<div class="flex justify-center">
+<a class="px-8 py-3.5 rounded-full bg-on-surface text-sticker-white font-title-md text-title-md uppercase border-2 border-on-surface shadow-[4px_4px_0_#e4006c] hover:bg-primary hover:translate-y-[-2px] hover:shadow-[6px_6px_0_#e4006c] transition-all" href="#shop">
+          Build your own bundle →
+        </a>
+</div>
+</div>
+</section>
+<!-- SOX WE THINK YOU'LL LOVE (CURATED ROW) -->
+<section class="w-full bg-surface-bright py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-sm">
+<div>
+<span class="italic font-body-md text-body-md text-primary font-bold">picked for maximum foot drama</span>
+<h2 class="font-headline-xl text-headline-xl-mobile lg:text-headline-xl uppercase text-on-surface tracking-tight">
+            SOX WE THINK YOU'LL <span class="text-tertiary underline decoration-secondary-container">LOVE.</span>
+</h2>
+</div>
+<a class="px-5 py-2 rounded-full bg-secondary-container border-2 border-on-surface text-on-secondary-fixed font-title-md text-body-md uppercase shadow-[3px_3px_0_#0f0d5a] hover:bg-secondary-fixed hover:translate-x-0.5 hover:translate-y-0.5 transition-all flex items-center gap-1.5 self-start md:self-end" href="#shop">
+          See every pair →
+        </a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-primary/10 mb-space-sm border-2 border-on-surface">
+<img alt="Mirchi Masala socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1UOiw49s-u9YyvPgGVLUJEL48EihVycFILlgvPQ3vonhD7ZeeL65bsP5z9YpgiRtK2Z9y-XZEZ-Uv5Vjp4vCqNHMJdeuRqTLmYgZ1IjrLHaRj4ZCJ3aZrMKBO1fhk7Zo5uG3UIEd480oy7zSkZgB2b408g__yfdqivx8el9oor2uQvnLBpWqmOfNF25rpapoEm2ph3JnFaG48fCKd0dRst1Ew-OtY3U9JUUwPOl8J1PmqVV96aGOxnTw0Y1">
+<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">New</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black">Mirchi Masala</h3>
+<div class="text-xs font-bold text-on-surface">★ 4.9</div>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant">Cream / Chilli Print · Crew</p>
+<div class="mt-2 font-title-md text-title-md text-primary font-black">₹449</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Card 2 -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-secondary-fixed mb-space-sm border-2 border-on-surface">
+<img alt="Matchbox Mania socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WgXtdLrmLehX9vJDVcu_cdiVlFJWXor5NZBZEkMGkz9r3v97bMDCJnx2zL9mXSHm7xlw0aQU-uvYgI558kQSab9PwTvCkEWsX3w3qM3-TGZTCo2fVO4V9NkbIdZ9UgHMFA3js8_M3BaFWLiCeUNDbixpLMK_q2vGimdvuPkrM9EnZad-qQMdrLvUn6OOHaiGP-0m0o0xDRg5jfLCgzqN4oSL0legb_OBtE8XplSFgO4kT53IihW30xn_w">
+<span class="absolute top-2 left-2 bg-tertiary text-on-tertiary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Limited</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black">Matchbox Mania</h3>
+<div class="text-xs font-bold text-on-surface">★ 4.9</div>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant">Orange / Retro Print · Mid-calf</p>
+<div class="mt-2 font-title-md text-title-md text-primary font-black">₹499</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Card 3 -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-surface-container mb-space-sm border-2 border-on-surface">
+<img alt="Zigzag Zindagi socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1WIXBYjmh4mHn41glUrlgDCh5_aT3LTpGsZZn4aPeNBwNORKZnUUos7mga5loKPEY390q1JFmFOQv8HW_fvqv_0pHNM3NgaHnLKLpRSd_dh0aUntyJq5jjj4sMxjxM2YVVbeuf5djUV7HH9wdHYOesj6wGWU6w3i71MBi4FMdCRUwZ14K-fZqqipEt4rCzq3dIPYA_B6cpYKCJiyPZ4jtYyuTWIQeL9UTQsylQ7A7N_HqTxQU70iTovt13d">
+<span class="absolute top-2 left-2 bg-primary text-on-primary font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Bestseller</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black">Zigzag Zindagi</h3>
+<div class="text-xs font-bold text-on-surface">★ 4.8</div>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant">Pink / Orange Zigzag · Ankle</p>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-title-md text-title-md text-primary font-black">₹399</span>
+<span class="text-xs text-outline line-through">₹549</span>
+</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+<!-- Card 4 -->
+<div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[6px_6px_0_#0f0d5a] flex flex-col justify-between group brutal-card-hover">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden bg-pink-100 mb-space-sm border-2 border-on-surface">
+<img alt="Swirl Trip socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida/AEtjO1V41JA_wqEtV5dqlSA1uLLXta7h8KGf0ZDtnKPqY5k3Xve28K5l8I9ScjTRiuzllWA5QNAF0BU7sjXmN_YrfRSBFIhms_Fk6BpygUtKMrgqg_5Yvf7d480MdhQkiQXjrix06HIMSjxlfie1GNms5gfToWIZOmDHbj6TvcAvcKdfDU_5VWZS97Gzt2PVlJ9_1iXr1uB4rvyG9IBjafj9iVgQmFh-lPhrwtpr40tnq0AbRErcwBtdlf5iXXWd">
+<span class="absolute top-2 left-2 bg-secondary-container text-on-secondary-fixed font-label-badge text-label-badge uppercase px-2 py-0.5 rounded-full border border-on-surface font-extrabold shadow-[1px_1px_0_#0f0d5a]">Bestseller</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<h3 class="font-title-md text-title-md uppercase text-on-surface font-black">Swirl Trip</h3>
+<div class="text-xs font-bold text-on-surface">★ 4.8</div>
+</div>
+<p class="font-body-md text-[13px] text-on-surface-variant">Orange / Pink Swirl · No-show</p>
+<div class="mt-2 font-title-md text-title-md text-primary font-black">₹349</div>
+</div>
+<button class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-body-md uppercase border-2 border-on-surface hover:bg-primary transition-colors">
+            Add
+          </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SOCKSY TICKER RIBBON -->
+<div class="w-full bg-secondary-fixed py-2.5 overflow-hidden border-b-4 border-on-surface select-none">
+<div class="animate-marquee-infinite uppercase font-label-ticker text-label-ticker text-on-secondary-fixed tracking-widest font-black">
+<div class="flex items-center gap-8 pr-8"><span class="">socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦</span><span class="">socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦</span></div>
+<div aria-hidden="true" class="flex items-center gap-8 pr-8"><span class="">socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦</span><span class="">socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦ socksy ✦</span></div>
+</div>
+</div>
+<!-- TESTIMONIAL & LIFESTYLE (HOT PINK / MAGENTA BLAST) -->
+<section class="w-full bg-primary text-on-primary py-space-2xl px-margin lg:px-margin-desktop border-b-4 border-on-surface">
+<div class="max-w-7xl mx-auto flex flex-col items-center">
+<!-- Big Bold Headline -->
+<h2 class="font-display-hero text-headline-xl-mobile lg:text-display-hero uppercase text-sticker-white text-center leading-tight tracking-tight mb-space-xl">
+        YOUR FEET <br>
+        HAVE ENTERED <br>
+<span class="text-secondary-fixed underline decoration-ink-black">THEIR FUN ERA.</span>
+</h2>
+<!-- Lifestyle photo: Auto Rickshaw Bandra Vibe -->
+<div class="w-full max-w-4xl rounded-3xl overflow-hidden border-4 border-on-surface shadow-[8px_8px_0_#0f0d5a] bg-canvas-cream mb-space-xl">
+<img alt="Friends wearing bright funky socks sitting in the back of a yellow auto rickshaw" class="w-full h-auto max-h-[550px] object-cover hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AEtjO1XJP7k3zAvuV9jtu66UDID5OXHvBi2DHhcVH6lFtXoCI7AZNl0QshXRkiNBqoXMHccFUt4OSutB6hmK6fPD8kL1Ld5v7ZJpdHlktPPg7JwIEO5ue8gJ8mX_IgvZ2RRsfwrYr8LzbTUFwPuPq6hbaf-nEPy84LTneVZDZq2Kb2qGx2sE2Y5jjtftjB5P_Oxk7c43jkKZyAjE3VyiUqTm-nuJ0gOWJm6xv15kYHv2y344_ajQ0SlbjIwpoKbH">
+</div>
+<!-- People are obsessed -->
+<div class="w-full max-w-5xl">
+<h3 class="font-headline-lg text-headline-lg uppercase text-canvas-cream mb-space-md text-center">
+          People are obsessed.
+        </h3>
+<!-- Testimonial Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter text-on-surface">
+<div class="bg-canvas-cream p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between rotate-[-1deg] brutal-card-hover">
+<p class="font-title-md text-title-md italic mb-4">
+              “I bought these for myself and now everyone keeps asking where they're from.”
+            </p>
+<div class="text-secondary font-black tracking-widest">★★★★★</div>
+</div>
+<div class="bg-sticker-white p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
+<p class="font-title-md text-title-md italic mb-4">
+              “Finally, socks with a personality. Fits great, hasn't shrunk after multiple washes!”
+            </p>
+<div class="text-secondary font-black tracking-widest">★★★★★</div>
+</div>
+<div class="bg-secondary-fixed p-5 rounded-3xl border-3 border-on-surface shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between rotate-[1deg] brutal-card-hover">
+<p class="font-title-md text-title-md italic mb-4">
+              “My feet have never received this much attention. Total conversation starter.”
+            </p>
+<div class="text-secondary font-black tracking-widest">★★★★★</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- BOTTOM TICKER RIBBON -->
+<div class="w-full bg-tertiary py-2.5 overflow-hidden border-b-4 border-on-surface text-on-tertiary select-none">
+<div class="animate-marquee-infinite uppercase font-label-ticker text-label-ticker tracking-widest font-black">
+<div class="flex items-center gap-8 pr-8"><span class="">socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦ socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦</span><span class="">socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦ socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦</span></div>
+<div aria-hidden="true" class="flex items-center gap-8 pr-8"><span class="">socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦ socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦</span><span class="">socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦ socksy socksy socksy ✦ keep your sox fun ✦ made in india 🇮🇳 ✦</span></div>
+</div>
+</div>
+</div></main><footer class="w-full bg-ink-black text-sticker-white border-t-4 border-on-surface"><div class="max-w-7xl mx-auto px-margin lg:px-margin-desktop py-space-2xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop mb-space-2xl"><div class="lg:col-span-6 space-y-space-md"><div class="flex items-center gap-space-sm"><img alt="Mojadaar 3D Logo" class="h-16 w-auto object-contain filter drop-shadow-[2px_2px_0px_#fecf00]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWXVIGX9kZb_GBWz79V3CRyKcuOWfSNhpSr2YFnF6w-aBUmnLtiLfPlcqtPVkxH9MiS6DbzyXm3v534SyY-_QB4K7bvR97X0FB0EPVkzjQW4eIJJz55udYAlYYqfLuBZm6MgEhzFeHAP6CyyOaP4-pDNrTIN73Xb1dh_AWbY6bqqm9sNtX7oE43fCxLpCTHeaL_Z85ajI5N5LlK-cC9xKjCj71-o3eQe_b_u1MLeunSbC40am6XvSJJLuEgpY53lOqKcg"></div><h2 class="font-display-hero text-headline-xl uppercase tracking-tight text-canvas-cream">KEEP YOUR SOX FUN.</h2><p class="font-body-lg text-body-lg text-inverse-on-surface max-w-md">Born to rescue ankles everywhere from boring grey fabrics. Premium combed cotton, street pop graphics, made in India.</p><div class="pt-space-sm"><p class="font-title-md text-title-md text-primary-fixed mb-space-xs uppercase">Get socksy in your inbox</p><form class="flex items-center max-w-md bg-sticker-white rounded-full p-1.5 border-2 border-sticker-white shadow-[4px_4px_0_#FF0055]"><input class="flex-1 bg-transparent px-4 py-2 font-body-md text-body-md text-ink-black focus:outline-none placeholder:text-outline" placeholder="Enter your funky email..." type="email"><button class="bg-primary text-on-primary font-title-md text-body-md px-6 py-2 rounded-full border-2 border-ink-black uppercase shadow-[2px_2px_0_#0A0A28] hover:bg-primary-container transition-colors" type="button">Subscribe</button></form></div></div><div class="lg:col-span-3 space-y-space-sm"><h3 class="font-headline-md text-headline-md uppercase text-secondary-container tracking-wider">EXPLORE</h3><ul class="space-y-space-xs font-body-md text-body-md text-inverse-on-surface"><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="shop" href="#">Shop All</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="new-drops" href="#">New Drops</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="ankle" href="#">Ankle Sox</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="crew" href="#">Crew Sox</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="no-show" href="#">No-show Sox</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="about" href="#">About Us</a></li></ul></div><div class="lg:col-span-3 space-y-space-sm"><h3 class="font-headline-md text-headline-md uppercase text-secondary-container tracking-wider">SUPPORT &amp; HELP</h3><ul class="space-y-space-xs font-body-md text-body-md text-inverse-on-surface"><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="faq" href="#">FAQ</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="contact" href="#">Contact</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="shipping" href="#">Shipping Policy</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="returns" href="#">Returns &amp; Exchanges</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="privacy" href="#">Privacy Policy</a></li><li class=""><a class="hover:text-secondary-fixed transition-colors" data-path="terms" href="#">Terms of Service</a></li></ul><div class="pt-space-sm flex items-center gap-space-sm text-inverse-on-surface"><a aria-label="Instagram" class="w-9 h-9 rounded-full bg-surface-variant/20 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">photo_camera</span></a><a aria-label="Store Locator" class="w-9 h-9 rounded-full bg-surface-variant/20 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span></a><a aria-label="Email" class="w-9 h-9 rounded-full bg-surface-variant/20 flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">mail</span></a></div></div></div><div class="pt-space-lg border-t border-surface-variant/20 flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-ticker text-label-ticker text-inverse-on-surface/80 uppercase tracking-widest"><p class="">© 2026 Mojadaar · Looking too socksy · Made in India</p><div class="flex items-center gap-space-md"><span class="hover:text-secondary-fixed cursor-pointer">100% Cotton</span><span class="">✦</span><span class="hover:text-secondary-fixed cursor-pointer">All Rights Reserved</span></div></div></div></footer>
 
-          <!-- Product 4: Bijli Stripes -->
-          <div class="bg-sticker-white rounded-3xl border-3 border-on-surface p-4 shadow-[5px_5px_0_#0f0d5a] flex flex-col justify-between brutal-card-hover">
-            <div>
-              <div class="relative aspect-square rounded-2xl overflow-hidden bg-canvas-cream mb-4 border-2 border-on-surface">
-                <img alt="Bijli Stripes socks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1V-qYVPmWJErPaKcaSsXDk9ATSEqBDxkDdkPIH0ioKc72D1Wy9d-rg0heTh4Ujgd7JtOqaEjixp-mJQtMref31iLXWN-nRn1QRwjNP9P5vJK-FADLVt-nVtmLGUxQ64CFXpc9YVXhwNb6IQyuNk6G00ApcM8gf9a68vD2Nt3fDAi4sZxymdJvSCIzp7XU-YdW0oKhK7n9LQ-zLWvZeayoKhKp7UWfOLngpCX_xmTyHKz3yjRes1WoVzSVOA"/>
-              </div>
-              <h3 class="font-title-md uppercase text-on-surface font-black">Bijli Stripes</h3>
-              <p class="text-xs text-on-surface-variant">Pink / Yellow Stripe · Crew</p>
-              <div class="flex items-baseline gap-2 mt-2">
-                <span class="font-title-md text-primary font-black">₹379</span>
-              </div>
-            </div>
-            <button onclick="addToCart('Bijli Stripes', 379, 'https://lh3.googleusercontent.com/aida/AEtjO1V-qYVPmWJErPaKcaSsXDk9ATSEqBDxkDdkPIH0ioKc72D1Wy9d-rg0heTh4Ujgd7JtOqaEjixp-mJQtMref31iLXWN-nRn1QRwjNP9P5vJK-FADLVt-nVtmLGUxQ64CFXpc9YVXhwNb6IQyuNk6G00ApcM8gf9a68vD2Nt3fDAi4sZxymdJvSCIzp7XU-YdW0oKhK7n9LQ-zLWvZeayoKhKp7UWfOLngpCX_xmTyHKz3yjRes1WoVzSVOA')" class="mt-4 w-full py-2 rounded-xl bg-on-surface text-sticker-white font-title-md text-xs uppercase border-2 border-on-surface hover:bg-primary transition-colors">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-on-surface text-sticker-white py-12 px-4 lg:px-12 border-t-4 border-on-surface">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <span class="font-display-hero text-2xl uppercase text-secondary-container">MOJADAAR</span>
-        <p class="text-xs text-surface-variant mt-1">© 2026 MOJADAAR SOCKS INC. ALL RIGHTS RESERVED.</p>
-      </div>
-      <div class="flex gap-4 text-xs">
-        <a href="index.html" class="hover:text-secondary-container">Home</a>
-        <a href="Mirchi Masala Crew Sox.html" class="hover:text-secondary-container">Mirchi Masala Drop</a>
-        <a href="Cart.html" class="hover:text-secondary-container">Cart</a>
-        <a href="Checkout.html" class="hover:text-secondary-container">Checkout</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- SHARED STORE CART SCRIPT -->
-  <script>
-    function getCart() {
-      return JSON.parse(localStorage.getItem('mojadaar_cart')) || [];
-    }
-
-    function saveCart(cart) {
-      localStorage.setItem('mojadaar_cart', JSON.stringify(cart));
-      updateBadge();
-    }
-
-    function updateBadge() {
-      const cart = getCart();
-      const count = cart.reduce((total, item) => total + (item.qty || 1), 0);
-      const badge = document.getElementById('cart-badge');
-      if (badge) badge.innerText = count;
-    }
-
-    function addToCart(name, price, img) {
-      let cart = getCart();
-      const existing = cart.find(i => i.name === name);
-      if (existing) {
-        existing.qty = (existing.qty || 1) + 1;
-      } else {
-        cart.push({ name, price, img, qty: 1 });
-      }
-      saveCart(cart);
-      alert(`${name} added to cart!`);
-    }
-
-    document.addEventListener('DOMContentLoaded', updateBadge);
-  </script>
-</body>
-</html>
+</body></html>

@@ -119,29 +119,45 @@
   mix-blend-mode: multiply;
 }
 </style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-surface": "#0f0d5a", "surface": "#fcf8ff", "on-tertiary-fixed": "#370e00", "tertiary-container": "#cb4900", "on-primary": "#ffffff", "tertiary": "#a23900", "on-secondary-fixed": "#231b00", "on-error-container": "#93000a", "on-error": "#ffffff", "secondary-fixed": "#ffe082", "error": "#ba1a1a", "on-secondary-container": "#6f5900", "sticker-white": "#FFFFFF", "surface-container-low": "#f5f2ff", "inverse-on-surface": "#f2efff", "surface-variant": "#e1e0ff", "on-tertiary-container": "#fffbff", "on-secondary-fixed-variant": "#564500", "outline": "#906e75", "ink-black": "#0A0A28", "secondary-fixed-dim": "#eec200", "tertiary-fixed": "#ffdbce", "secondary-container": "#fecf00", "on-primary-fixed": "#3f0019", "primary-container": "#e4006c", "inverse-primary": "#ffb1c3", "surface-container": "#eeecff", "on-primary-fixed-variant": "#8f0041", "surface-container-high": "#e8e6ff", "inverse-surface": "#26276e", "alert-badge": "#FF0055", "background": "#fcf8ff", "surface-bright": "#fcf8ff", "surface-container-lowest": "#ffffff", "surface-dim": "#d7d6ff", "primary-fixed-dim": "#ffb1c3", "on-secondary": "#ffffff", "secondary": "#725c00", "surface-tint": "#bb0058", "on-tertiary-fixed-variant": "#7f2b00", "error-container": "#ffdad6", "on-background": "#0f0d5a", "tertiary-fixed-dim": "#ffb599", "outline-variant": "#e5bcc4", "on-primary-container": "#fffbff", "primary-fixed": "#ffd9e0", "on-tertiary": "#ffffff", "primary": "#b60055", "surface-container-highest": "#e1e0ff", "canvas-cream": "#FFF7D6", "on-surface-variant": "#5c3f45" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "4rem", "gutter-desktop": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "space-xs": "0.25rem", "margin-desktop": "3rem", "gutter": "1.25rem", "space-xl": "2.5rem", "margin": "1.25rem", "space-sm": "0.5rem" }, "fontFamily": { "display-hero": [ "Archivo Black", "Archivo Narrow", "Rubik", "sans-serif" ], "body-lg": [ "Rubik", "Fredoka", "sans-serif" ], "headline-lg": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "display-hero-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "body-md": [ "Rubik", "Fredoka", "sans-serif" ], "headline-xl-mobile": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-xl": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "title-md": [ "Rubik", "Fredoka", "sans-serif" ], "label-badge": [ "Fredoka", "Rubik", "sans-serif" ], "label-ticker": [ "Archivo Black", "Archivo Narrow", "sans-serif" ], "headline-md": [ "Archivo Black", "Rubik", "sans-serif" ] }, "fontSize": { "display-hero": [ "84px", { "lineHeight": "82px", "letterSpacing": "-0.03em", "fontWeight": "900" } ], "body-lg": [ "16px", { "lineHeight": "24px", "fontWeight": "500" } ], "headline-lg": [ "30px", { "lineHeight": "34px", "letterSpacing": "0em", "fontWeight": "800" } ], "display-hero-mobile": [ "44px", { "lineHeight": "46px", "letterSpacing": "-0.02em", "fontWeight": "900" } ], "body-md": [ "14px", { "lineHeight": "20px", "fontWeight": "400" } ], "headline-xl-mobile": [ "30px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "800" } ], "headline-xl": [ "44px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" } ], "title-md": [ "17px", { "lineHeight": "22px", "fontWeight": "700" } ], "label-badge": [ "11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "800" } ], "label-ticker": [ "13px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "800" } ], "headline-md": [ "20px", { "lineHeight": "26px", "fontWeight": "700" } ] } } } };</script></head><body class="bg-[#FFFDF5] font-body-md text-on-surface antialiased">
-<!-- 1. TOP HEADER NAVIGATION -->
+<!-- TOP HEADER NAVIGATION -->
 <header class="sticky top-0 z-50 bg-[#FFFDF5] border-b-2 border-on-surface select-none">
-<div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-4">
-<!-- Brand Logo Left with transparent blending -->
-<a class="flex items-center gap-2 group bg-transparent" data-path="home" href="#">
-<img alt="Mojadaar Logo" class="h-14 w-auto object-contain logo-blend-multiply bg-transparent transition-transform duration-300 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2HQ0kKsCeKNkCX_0fJUZmAskngivCrgbK5VyP2nYak61NkCELkXDKEb9beyHPLNrruuPqJoz7x8Gp25f8EuGKoDeLeNNYJhed7HivC3MmxUcbeTlxmtf3gFAaRL1zfQTUvD47kpzzA8wJnmIGUeR3hjtRNUtZ8dhBtS-373Z9ETH_B9T3D97DcRf0vrPuq0hO5dg4RY9xvXl2NCUvDpcBwkom-VinObNVHCrRSSmlfsYkYjSK7Y4eLHjxPPzw1AIP8oU" style="mix-blend-mode: multiply;">
-</a>
-<!-- Center Navigation Links -->
-<nav class="hidden md:flex items-center gap-6 lg:gap-8 font-black uppercase text-sm tracking-wider text-on-surface"><a class="hover:text-primary transition-colors cursor-pointer" data-path="shop" href="#">Shop</a><a class="hover:text-primary transition-colors cursor-pointer" data-path="new-drops" href="#">New Drops</a><a class="hover:text-primary transition-colors cursor-pointer" data-path="ankle" href="#">Ankle</a><a class="hover:text-primary transition-colors cursor-pointer" data-path="crew" href="#">Crew</a><a class="hover:text-primary transition-colors cursor-pointer" data-path="no-show" href="#">No-Show</a><a class="hover:text-primary transition-colors cursor-pointer" data-path="about" href="#about">About</a></nav>
-<!-- Right Utility Action Circles -->
-<div class="flex items-center gap-3">
-<!-- 1: Search Button -->
-<button aria-label="Search" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FFE043] flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a]">
-<span class="material-symbols-outlined text-[20px] font-black">search</span>
-</button>
-<!-- 2: Sunglasses Emoji Button -->
-<button aria-label="Fun Mood" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FF7F29] flex items-center justify-center text-xl shadow-[2px_2px_0_#0f0d5a]">
-<span class="">😎</span>
-</button>
-<!-- 3: Shopping Cart Badge -->
-<a aria-label="Shopping Cart" class="icon-bounce relative w-11 h-11 rounded-full border-2 border-on-surface bg-[#D8005A] flex items-center justify-center text-sticker-white shadow-[2px_2px_0_#0f0d5a] cursor-pointer" data-path="cart" href="#"><span class="material-symbols-outlined text-[20px]">shopping_cart</span><span class="absolute -top-1.5 -right-1.5 bg-[#FFDE00] text-on-surface font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-on-surface shadow-[1px_1px_0_#0f0d5a]">0</span></a>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 h-20 flex items-center justify-between gap-4">
+    <!-- Brand Logo -->
+    <a class="flex items-center gap-2 group bg-transparent" data-path="home" href="index.html">
+      <img 
+        alt="Mojadaar Logo" 
+        class="h-14 w-auto object-contain logo-blend-multiply bg-transparent transition-transform duration-300 group-hover:scale-105" 
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2HQ0kKsCeKNkCX_0fJUZmAskngivCrgbK5VyP2nYak61NkCELkXDKEb9beyHPLNrruuPqJoz7x8Gp25f8EuGKoDeLeNNYJhed7HivC3MmxUcbeTlxmtf3gFAaRL1zfQTUvD47kpzzA8wJnmIGUeR3hjtRNUtZ8dhBtS-373Z9ETH_B9T3D97DcRf0vrPuq0hO5dg4RY9xvXl2NCUvDpcBwkom-VinObNVHCrRSSmlfsYkYjSK7Y4eLHjxPPzw1AIP8oU" 
+        style="mix-blend-mode: multiply;"
+      >
+    </a>
+
+    <!-- Clean Navigation Links (Removed New Drops, Ankle, Crew, No-Show) -->
+    <nav class="hidden md:flex items-center gap-8 font-black uppercase text-sm tracking-wider text-on-surface">
+      <a class="hover:text-primary transition-colors cursor-pointer" data-path="shop" href="Shop.html">Shop All</a>
+      <a class="hover:text-primary transition-colors cursor-pointer" data-path="wishlist" href="Shop.html?view=wishlist">Wishlist</a>
+      <a class="hover:text-primary transition-colors cursor-pointer" data-path="about" href="#about">About</a>
+    </nav>
+
+    <!-- Utility Action Buttons -->
+    <div class="flex items-center gap-3">
+      <!-- Search Button -->
+      <button aria-label="Search" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FFE043] flex items-center justify-center text-on-surface shadow-[2px_2px_0_#0f0d5a]">
+        <span class="material-symbols-outlined text-[20px] font-black">search</span>
+      </button>
+
+      <!-- Emoji / Mood Button -->
+      <button aria-label="Fun Mood" class="icon-bounce w-11 h-11 rounded-full border-2 border-on-surface bg-[#FF7F29] flex items-center justify-center text-xl shadow-[2px_2px_0_#0f0d5a]">
+        <span>😎</span>
+      </button>
+
+      <!-- Cart Badge -->
+      <a aria-label="Shopping Cart" class="icon-bounce relative w-11 h-11 rounded-full border-2 border-on-surface bg-[#D8005A] flex items-center justify-center text-sticker-white shadow-[2px_2px_0_#0f0d5a] cursor-pointer" data-path="cart" href="Cart.html">
+        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+        <span id="cart-badge-count" class="absolute -top-1.5 -right-1.5 bg-[#FFDE00] text-on-surface font-black text-[11px] w-5 h-5 rounded-full flex items-center justify-center border-2 border-on-surface shadow-[1px_1px_0_#0f0d5a]">0</span>
+      </a>
+    </div>
+  </div>
 </header>
 <!-- 2. PINK TOP TICKER RIBBON -->
 <div class="w-full bg-[#E4006C] text-sticker-white py-2 overflow-hidden border-b-2 border-on-surface select-none">
@@ -446,15 +462,50 @@
 </footer>
 
 <script id="mojedaar-navigation">
-document.addEventListener("click", function(e) {
-  const el = e.target.closest("[data-path]");
-  if (!el) return;
-  const routes = { home: "index.html", shop: "Shop.html", "new-drops": "Shop.html", ankle: "Shop.html", crew: "Shop.html", "no-show": "Shop.html", cart: "Cart.html", checkout: "Checkout.html", product: "Mirchi Masala Crew Sox.html" };
-  const p = el.getAttribute("data-path");
-  if (routes[p]) {
-    e.preventDefault();
-    location.href = routes[p];
+/**
+ * Mojedaar Navigation & Routing Engine
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Global click delegator for routing data-path attributes
+  document.addEventListener("click", function (e) {
+    const el = e.target.closest("[data-path]");
+    if (!el) return;
+
+    const path = el.getAttribute("data-path");
+    
+    const routes = {
+      "home": "index.html",
+      "shop": "Shop.html",
+      "wishlist": "Shop.html?view=wishlist",
+      "about": "index.html#about",
+      "cart": "Cart.html",
+      "checkout": "Checkout.html",
+      "product-detail": "Mirchi Masala Crew Sox.html"
+    };
+
+    if (routes[path]) {
+      e.preventDefault();
+      window.location.href = routes[path];
+    }
+  });
+
+  // Sync cart badge count on page load from local storage
+  function syncCartCount() {
+    const cartBadge = document.getElementById("cart-badge-count");
+    if (!cartBadge) return;
+
+    try {
+      const cart = JSON.parse(localStorage.getItem("mojedaar_cart") || "[]");
+      const totalItems = cart.reduce((sum, item) => sum + (parseInt(item.quantity, 10) || 1), 0);
+      cartBadge.textContent = totalItems;
+    } catch (err) {
+      cartBadge.textContent = "0";
+    }
   }
+
+  syncCartCount();
+  window.addEventListener("storage", syncCartCount);
 });
 
 document.addEventListener("DOMContentLoaded", function() {

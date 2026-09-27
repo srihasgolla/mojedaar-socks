@@ -1,1 +1,29 @@
-document.addEventListener('DOMContentLoaded',function(){const routes={home:'index.html',shop:'Shop.html','new-drops':'Shop.html',ankle:'Shop.html',crew:'Shop.html','no-show':'Shop.html',cart:'Cart.html',checkout:'Checkout.html',product:'Mirchi Masala Crew Sox.html'};function go(p){if(routes[p])location.href=routes[p]}function cart(){try{return JSON.parse(localStorage.getItem('mojedaarCart')||'[]')}catch(e){return[]}}function save(c){localStorage.setItem('mojedaarCart',JSON.stringify(c));updateBadge()}function updateBadge(){document.querySelectorAll('[data-cart-count],.cart-count,.cart-badge').forEach(e=>e.textContent=cart().reduce((n,i)=>n+(i.qty||1),0))}document.addEventListener('click',function(e){const el=e.target.closest('[data-path]');if(el){const p=el.getAttribute('data-path');if(routes[p]){e.preventDefault();go(p);return}}const add=e.target.closest('[data-add-to-cart],.add-to-cart,button');if(add&&/add/i.test(add.textContent||'')){const card=add.closest('[data-product],.product-card,.product,.card');if(card){e.preventDefault();const name=card.dataset.product||card.querySelector('.product-name,.name,h3,h2')?.textContent?.trim()||'Mojedaar Sox';const priceText=card.dataset.price||card.querySelector('.price')?.textContent||'₹600';const price=Number((priceText.match(/[\d,]+/)||['600'])[0].replace(/,/g,''));const c=cart();const x=c.find(i=>i.name===name);x?x.qty++:c.push({name,price,qty:1});save(c);add.textContent='ADDED ✓';setTimeout(()=>add.textContent='ADD',900);return}}const link=e.target.closest('a[href="#"]');if(link){e.preventDefault();const t=(link.textContent||'').trim().toLowerCase();if(t==='shop'||t==='new drops'||t==='ankle'||t==='crew'||t==='no-show')go(t==='shop'?'shop':t.replace(' ','-'))}});updateBadge();});
+class GlobalHeader extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+      <header class="site-header">
+        <div class="header-container">
+          <!-- Logo -->
+          <a href="index.html" class="logo">Mojedaar</a>
+
+          <!-- Navigation Links -->
+          <nav class="nav-menu">
+            <a href="index.html">Home</a>
+            <a href="Shop.html">Shop</a>
+            <a href="Cart.html">Cart</a>
+            <a href="Checkout.html">Checkout</a>
+          </nav>
+
+          <!-- Cart Icon / Total (Optional) -->
+          <div class="header-actions">
+            <a href="Cart.html" class="cart-link">
+              🛒 Cart (<span id="global-cart-count">0</span>)
+            </a>
+          </div>
+        </div>
+      </header>
+    `;
+  }
+}
+
+customElements.define('global-header', GlobalHeader);

@@ -293,15 +293,3 @@ a {
     font-size: 36px !important;
   }
 }
-/* MOJEDAAR - SCROLL FIX */
-html,
-body {
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  height: auto !important;
-  min-height: 100% !important;
-}
-
-body {
-  overscroll-behavior-y: auto !important;
-}

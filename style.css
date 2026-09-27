@@ -293,3 +293,19 @@ a {
     font-size: 36px !important;
   }
 }
+
+/* =========================================================
+   MOJEDAAR — GLOBAL SCROLL RESTORE
+   Does not alter page styling or imagery.
+   ========================================================= */
+html,
+body {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: auto !important;
+  min-height: 100% !important;
+}
+
+body {
+  overscroll-behavior-y: auto !important;
+}
